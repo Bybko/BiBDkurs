@@ -1,0 +1,668 @@
+MDScreenManager:
+    id: main_screen_manager
+
+    MDScreen:
+        name: 'main'
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.9
+            spacing: 20
+            padding: 20
+
+            MDRectangleFlatButton:
+                size_hint_x: 0.5
+                pos_hint: {"center_x": 0.5}
+                text: "Справочные документы"
+                on_press: main_screen_manager.current = 'tables'
+
+            MDRectangleFlatButton:
+                size_hint_x: 0.5
+                pos_hint: {"center_x": 0.5}
+                text: "Оперативные документы"
+                on_press: main_screen_manager.current = 'operation_tables'
+
+        Navigation:
+            title: "АРМ \"Технолога швейного цеха\""
+
+    MDScreen:
+        name: 'tables'
+
+        MDNavigationLayout:
+            MDScreenManager:
+                id: table_screen_manager
+
+                MDScreen:
+                    name: 'table_choose'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Список разрядов"
+                            on_press: table_screen_manager.current = 'rank_view'
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Список сеток"
+                            on_press: table_screen_manager.current = 'grid_view'
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Список бригад"
+                            on_press: table_screen_manager.current = 'brigade_view'
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Справочник швейных изделий"
+                            on_press: table_screen_manager.current = 'product_view'
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Справочник видов операций"
+                            on_press: table_screen_manager.current = 'operations_view'
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Справочник заказчиков швейного цеха"
+                            on_press: table_screen_manager.current = 'client_view'
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Назад"
+                            on_press: main_screen_manager.current = 'main'
+
+                MDScreen:
+                    name: 'rank_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        RankView:
+                            id: rank_list
+
+                        MDBoxLayout:
+                            orientation: 'horizontal'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.2
+                                on_press: table_screen_manager.current = 'table_choose'
+                            MDLabel:
+                                size_hint_x: 0.8
+
+                MDScreen:
+                    name: 'grid_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        GridView:
+                            id: grid_list
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
+                                on_press: table_screen_manager.current = 'table_choose'
+
+                MDScreen:
+                    name: 'brigade_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        BrigadesView:
+                            id: brigade_list
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
+                                on_press: table_screen_manager.current = 'table_choose'
+
+                MDScreen:
+                    name: 'product_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        ProductView:
+                            id: product_list
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
+                                on_press: table_screen_manager.current = 'table_choose'
+
+                MDScreen:
+                    name: 'operations_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        OperationsView:
+                            id: operations_list
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
+                                on_press: table_screen_manager.current = 'table_choose'
+
+                MDScreen:
+                    name: 'client_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        ClientView:
+                            id: client_list
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
+                                on_press: table_screen_manager.current = 'table_choose'
+
+        Navigation:
+            title: "Справочные документы"
+
+    MDScreen:
+        name: 'operation_tables'
+
+        MDNavigationLayout:
+            MDScreenManager:
+                id: operation_table_screen_manager
+
+                MDScreen:
+                    name: 'table_choose'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "План работы бригад швейного цеха"
+                            on_press: operation_table_screen_manager.current = 'plan_view'
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Наряд-задание на выполнение договора"
+                            on_press: operation_table_screen_manager.current = 'task_view'
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Назад"
+                            on_press: main_screen_manager.current = 'main'
+
+                MDScreen:
+                    name: 'plan_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        PlanView:
+                            id: plan_list
+
+                        MDBoxLayout:
+                            orientation: 'horizontal'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.2
+                                on_press: operation_table_screen_manager.current = 'table_choose'
+                            MDLabel:
+                                size_hint_x: 0.8
+
+                MDScreen:
+                    name: 'task_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        TaskView:
+                            id: task_list
+
+                        MDBoxLayout:
+                            orientation: 'horizontal'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.2
+                                on_press: operation_table_screen_manager.current = 'table_choose'
+                            MDLabel:
+                                size_hint_x: 0.8
+
+
+<Navigation>:
+    pos_hint: {"top": 1}
+    size_hint_y: 0.1
+
+
+<RankCard>:
+    size_hint_y: None
+    height: content.height
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            size_hint_y: None
+            cols: 3
+            rows: 1
+            spacing: 10
+            id: content
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: str(root.rank)
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: str(root.rankFactor)
+            MDBoxLayout:
+                width: 50
+                size_hint_x: None
+                orientation: 'vertical'
+                MDIconButton:
+                    icon: "content-save-edit"
+                    theme_icon_color: "Custom"
+                    icon_color: app.save_color
+                    on_press: app.update_rank(root)
+
+                MDIconButton:
+                    icon: "trash-can"
+                    theme_icon_color: "Custom"
+                    icon_color: app.error_color
+                    pos_hint: {"center_y": .5}
+                    on_press: app.delete_rank(root)
+
+
+<GridCard>:
+    size_hint_y: None
+    height: content.height
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            size_hint_y: None
+            cols: 3
+            rows: 1
+            spacing: 10
+            id: content
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.grid
+            MDTextField:
+                text: str(root.gridFactor)
+            MDBoxLayout:
+                width: 50
+                size_hint_x: None
+                orientation: 'vertical'
+                MDIconButton:
+                    icon: "content-save-edit"
+                    theme_icon_color: "Custom"
+                    icon_color: app.save_color
+                    on_press: app.update_grid(root)
+
+                MDIconButton:
+                    icon: "trash-can"
+                    theme_icon_color: "Custom"
+                    icon_color: app.error_color
+                    pos_hint: {"center_y": .5}
+                    on_press: app.delete_grid(root)
+
+
+<BrigadesCard>:
+    size_hint_y: None
+    height: 100
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            size_hint_y: None
+            cols: 4
+            rows: 1
+            spacing: 10
+            MDTextField:
+                text: root.brigadeCode
+            MDTextField:
+                text: root.brigadeLeader
+            MDTextField:
+                text: str(root.workersNum)
+            MDBoxLayout:
+                width: 50
+                size_hint_x: None
+                orientation: 'vertical'
+                MDIconButton:
+                    icon: "content-save-edit"
+                    theme_icon_color: "Custom"
+                    icon_color: app.save_color
+                    on_press: app.update_brigade(root)
+
+                MDIconButton:
+                    icon: "trash-can"
+                    theme_icon_color: "Custom"
+                    icon_color: app.error_color
+                    pos_hint: {"center_y": .5}
+                    on_press: app.delete_brigade(root)
+
+
+<ProductCard>:
+    size_hint_y: None
+    height: 100
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            size_hint_y: None
+            cols: 6
+            rows: 1
+            spacing: 10
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.productCode
+            MDTextField:
+                text: root.productName
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.productDescription
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.unit
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: str(root.price)
+            MDBoxLayout:
+                width: 50
+                size_hint_x: None
+                orientation: 'vertical'
+                MDIconButton:
+                    icon: "content-save-edit"
+                    theme_icon_color: "Custom"
+                    icon_color: app.save_color
+                    on_press: app.update_product(root)
+
+                MDIconButton:
+                    icon: "trash-can"
+                    theme_icon_color: "Custom"
+                    icon_color: app.error_color
+                    pos_hint: {"center_y": .5}
+                    on_press: app.delete_product(root)
+<OperationsCard>:
+    size_hint_y: None
+    height: 100
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            size_hint_y: None
+            cols: 7
+            rows: 1
+            spacing: 10
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.operationCode
+            MDTextField:
+                text: root.productCode
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.operationName
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.unit
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: str(root.operationTime)
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: str(root.rate)
+            MDBoxLayout:
+                width: 50
+                size_hint_x: None
+                orientation: 'vertical'
+                MDIconButton:
+                    icon: "content-save-edit"
+                    theme_icon_color: "Custom"
+                    icon_color: app.save_color
+                    on_press: app.update_operation(root)
+
+                MDIconButton:
+                    icon: "trash-can"
+                    theme_icon_color: "Custom"
+                    icon_color: app.error_color
+                    pos_hint: {"center_y": .5}
+                    on_press: app.delete_operation(root)
+
+<ClientsCard>:
+    size_hint_y: None
+    height: 100
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            size_hint_y: None
+            cols: 5
+            rows: 1
+            spacing: 10
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.companyCode
+            MDTextField:
+                text: root.companyName
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.companyLocation
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.companyCheck
+            MDBoxLayout:
+                width: 50
+                size_hint_x: None
+                orientation: 'vertical'
+                MDIconButton:
+                    icon: "content-save-edit"
+                    theme_icon_color: "Custom"
+                    icon_color: app.save_color
+                    on_press: app.update_client(root)
+
+                MDIconButton:
+                    icon: "trash-can"
+                    theme_icon_color: "Custom"
+                    icon_color: app.error_color
+                    pos_hint: {"center_y": .5}
+                    on_press: app.delete_client(root)
+
+<PlanCard>:
+    size_hint_y: None
+    height: 100
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            size_hint_y: None
+            cols: 6
+            rows: 1
+            spacing: 10
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.dealNumber
+            MDTextField:
+                text: str(root.generalPlan)
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.brigadeCode
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: str(root.numOfProducts)
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.planningFinishDate
+            MDBoxLayout:
+                width: 50
+                size_hint_x: None
+                orientation: 'vertical'
+                MDIconButton:
+                    icon: "content-save-edit"
+                    theme_icon_color: "Custom"
+                    icon_color: app.save_color
+                    on_press: app.update_plan(root)
+
+                MDIconButton:
+                    icon: "trash-can"
+                    theme_icon_color: "Custom"
+                    icon_color: app.error_color
+                    pos_hint: {"center_y": .5}
+                    on_press: app.delete_plan(root)
+
+<TaskCard>:
+    size_hint_y: None
+    height: 100
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            size_hint_y: None
+            cols: 12
+            rows: 1
+            spacing: 10
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.taskNumber
+            MDTextField:
+                text: root.brigadeCode
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.dealNumber
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.productCode
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.date
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.operationCode
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.professionCode
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: str(root.rank)
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.grid
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: str(root.detailsPlan)
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: str(root.detailsResult)
+            MDBoxLayout:
+                width: 50
+                size_hint_x: None
+                orientation: 'vertical'
+                MDIconButton:
+                    icon: "content-save-edit"
+                    theme_icon_color: "Custom"
+                    icon_color: app.save_color
+                    on_press: app.update_task(root)
+
+                MDIconButton:
+                    icon: "trash-can"
+                    theme_icon_color: "Custom"
+                    icon_color: app.error_color
+                    pos_hint: {"center_y": .5}
+                    on_press: app.delete_task(root)
