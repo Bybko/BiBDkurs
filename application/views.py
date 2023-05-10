@@ -3,6 +3,7 @@ from kivymd.app import MDApp
 from kivymd.uix.gridlayout import MDGridLayout
 from kivymd.uix.button import MDRectangleFlatButton
 
+
 from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, OperationsCard, ClientsCard, PlanCard, TaskCard
 
 class AddButton(MDRectangleFlatButton):

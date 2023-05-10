@@ -3,6 +3,7 @@ MDScreenManager:
 
     MDScreen:
         name: 'main'
+        md_bg_color: "ffffff"
 
         MDBoxLayout:
             orientation: 'vertical'
@@ -322,8 +323,6 @@ MDScreenManager:
                 size_hint_x: None
                 text: str(root.rank)
             MDTextField:
-                width: 100
-                size_hint_x: None
                 text: str(root.rankFactor)
             MDBoxLayout:
                 width: 50
@@ -336,7 +335,7 @@ MDScreenManager:
                     on_press: app.update_rank(root)
 
                 MDIconButton:
-                    icon: "trash-can"
+                    icon: "delete"
                     theme_icon_color: "Custom"
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
@@ -372,7 +371,7 @@ MDScreenManager:
                     on_press: app.update_grid(root)
 
                 MDIconButton:
-                    icon: "trash-can"
+                    icon: "delete"
                     theme_icon_color: "Custom"
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
@@ -407,7 +406,7 @@ MDScreenManager:
                     on_press: app.update_brigade(root)
 
                 MDIconButton:
-                    icon: "trash-can"
+                    icon: "delete"
                     theme_icon_color: "Custom"
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
@@ -454,7 +453,7 @@ MDScreenManager:
                     on_press: app.update_product(root)
 
                 MDIconButton:
-                    icon: "trash-can"
+                    icon: "delete"
                     theme_icon_color: "Custom"
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
@@ -503,7 +502,7 @@ MDScreenManager:
                     on_press: app.update_operation(root)
 
                 MDIconButton:
-                    icon: "trash-can"
+                    icon: "delete"
                     theme_icon_color: "Custom"
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
@@ -545,7 +544,7 @@ MDScreenManager:
                     on_press: app.update_client(root)
 
                 MDIconButton:
-                    icon: "trash-can"
+                    icon: "delete"
                     theme_icon_color: "Custom"
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
@@ -591,7 +590,7 @@ MDScreenManager:
                     on_press: app.update_plan(root)
 
                 MDIconButton:
-                    icon: "trash-can"
+                    icon: "delete"
                     theme_icon_color: "Custom"
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
@@ -607,47 +606,39 @@ MDScreenManager:
             size_hint_y: None
             cols: 12
             rows: 1
-            spacing: 10
+            spacing: 5
             MDTextField:
-                width: 100
+                width: 10
                 size_hint_x: None
                 text: root.taskNumber
             MDTextField:
                 text: root.brigadeCode
             MDTextField:
-                width: 100
-                size_hint_x: None
                 text: root.dealNumber
             MDTextField:
-                width: 100
+                width: 30
                 size_hint_x: None
                 text: root.productCode
             MDTextField:
-                width: 100
-                size_hint_x: None
                 text: root.date
             MDTextField:
-                width: 100
-                size_hint_x: None
                 text: root.operationCode
             MDTextField:
-                width: 100
-                size_hint_x: None
                 text: root.professionCode
             MDTextField:
-                width: 100
+                width: 30
                 size_hint_x: None
                 text: str(root.rank)
             MDTextField:
-                width: 100
+                width: 30
                 size_hint_x: None
                 text: root.grid
             MDTextField:
-                width: 100
+                width: 30
                 size_hint_x: None
                 text: str(root.detailsPlan)
             MDTextField:
-                width: 100
+                width: 30
                 size_hint_x: None
                 text: str(root.detailsResult)
             MDBoxLayout:
@@ -655,13 +646,13 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "star"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_task(root)
 
                 MDIconButton:
-                    icon: "trash-can"
+                    icon: "account-heart"
                     theme_icon_color: "Custom"
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
