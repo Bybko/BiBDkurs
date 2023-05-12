@@ -8,7 +8,7 @@ from views import RankView, GridView, BrigadesView, ProductView, OperationsView,
 from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, OperationsCard, ClientsCard, PlanCard, TaskCard
 from database_view import BrigadeElement, BrigadesList, ClientElement, ClientsList, GridElement, GridList, \
     OperationsElement, OperationsList, ProductElement, ProductList, RankElement, RankList, BrigadePlanElement, \
-    BrigadePlan, TaskElement, Task
+    BrigadePlan, TaskElement, Task, BaseDataBaseView, BaseRecord
 
 
 class Menu(MDNavigationDrawer):
@@ -26,7 +26,6 @@ class KursApp(MDApp):
     def __init__(self, debug=False, **kwargs) -> None:
         super().__init__(**kwargs)
 
-        #со всем ниже поэксперементировать
         self.theme_cls.theme_style = 'Light'
         self.theme_cls.primary_palette = 'Brown'
         self.theme_cls.accent_palette = 'Red'
@@ -57,104 +56,76 @@ class KursApp(MDApp):
         else:
             toast('Ошибка авторизации')
 
-    def add_rank(self):
-        self.rank_view.add(RankElement('', '0'))
+
+    def add(self, table_view: BaseDataBaseView, record: BaseRecord):
+        table_view.add(record)
 
     def delete_rank(self, card: Card):
         self.rank_view.delete(card.id)
-        self.root.ids.rank_list.rank_list.remove_widget(card)
+        self.root.ids.rank_list.records_list.remove_widget(card)
 
     def update_rank(self, card: RankCard):
-        #wtf???
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.rank_view.update(card.id, RankElement(*[field.text for field in fields]))
         card.id = fields[0].text
 
-
-    def add_grid(self):
-        self.grid_view.add(GridElement('', ''))
-
     def delete_grid(self, card: Card):
         self.grid_view.delete(card.id)
-        self.root.ids.grid_list.grid_list.remove_widget(card)
+        self.root.ids.grid_list.records_list.remove_widget(card)
 
     def update_grid(self, card: GridCard):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.grid_view.update(card.id, GridElement(*[field.text for field in fields]))
         card.id = fields[0].text
 
-
-    def add_brigade(self):
-        self.brigade_view.add(BrigadeElement('', '', 0))
-
     def delete_brigade(self, card: Card):
         self.brigade_view.delete(card.id)
-        self.root.ids.brigade_list.brigade_list.remove_widget(card)
+        self.root.ids.brigade_list.records_list.remove_widget(card)
 
     def update_brigade(self, card: BrigadesCard):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.brigade_view.update(card.id, BrigadeElement(*[field.text for field in fields]))
         card.id = fields[0].text
 
-
-    def add_product(self):
-        self.product_view.add(ProductElement('', '', '', '', 0))
-
     def delete_product(self, card: Card):
         self.product_view.delete(card.id)
-        self.root.ids.product_list.product_list.remove_widget(card)
+        self.root.ids.product_list.records_list.remove_widget(card)
 
     def update_product(self, card: ProductCard):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.product_view.update(card.id, ProductElement(*[field.text for field in fields]))
         card.id = fields[0].text
 
-
-    def add_operation(self):
-        self.operations_view.add(OperationsElement('', '', '', '', 0, 0))
-
     def delete_operation(self, card: Card):
         self.operations_view.delete(card.id)
-        self.root.ids.operations_list.operations_list.remove_widget(card)
+        self.root.ids.operations_list.records_list.remove_widget(card)
 
     def update_operation(self, card: OperationsCard):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.operations_view.update(card.id.split(', '), OperationsElement(*[field.text for field in fields]))
         card.id = fields[0].text + ', ' + fields[1].text
 
-
-    def add_client(self):
-        self.client_view.add(ClientElement('', '', '', ''))
-
     def delete_client(self, card: Card):
         self.client_view.delete(card.id)
-        self.root.ids.client_list.client_list.remove_widget(card)
+        self.root.ids.client_list.records_list.remove_widget(card)
 
     def update_client(self, card: ClientsCard):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.client_view.update(card.id, ClientElement(*[field.text for field in fields]))
         card.id = fields[0].text
 
-
-    def add_plan(self):
-        self.plan_view.add(BrigadePlanElement('', 0, '', 0, ''))
-
     def delete_plan(self, card: Card):
         self.plan_view.delete(card.id)
-        self.root.ids.plan_list.plan_list.remove_widget(card)
+        self.root.ids.plan_list.records_list.remove_widget(card)
 
     def update_plan(self, card: OperationsCard):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.plan_view.update(card.id.split(', '), BrigadePlanElement(*[field.text for field in fields]))
         card.id = fields[0].text + ', ' + fields[2].text
 
-
-    def add_task(self):
-        self.task_view.add(TaskElement('', '', '', '', '', '', '', 0, '', 0, 0))
-
     def delete_task(self, card: Card):
         self.task_view.delete(card.id)
-        self.root.ids.task_list.task_list.remove_widget(card)
+        self.root.ids.task_list.records_list.remove_widget(card)
 
     def update_task(self, card: OperationsCard):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]

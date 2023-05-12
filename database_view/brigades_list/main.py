@@ -4,16 +4,10 @@ from dataclasses import dataclass
 
 @dataclass()
 class BrigadeElement(BaseRecord):
-    brigadeCode: str
-    brigadeLeader: str
-    workersNum: str
+    brigadeCode: str = ''
+    brigadeLeader: str = ''
+    workersNum: int = 0
 
-    def to_dict(self) -> dict:
-        return {
-            'brigadeCode': self.brigadeCode,
-            'brigadeLeader': self.brigadeLeader,
-            'workersNum': self.workersNum
-        }
 
 class BrigadesList(BaseDataBaseView):
     def __init__(self, debug: bool = False) -> None:

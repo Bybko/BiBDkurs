@@ -4,14 +4,9 @@ from dataclasses import dataclass
 
 @dataclass()
 class GridElement(BaseRecord):
-    grid: str
-    gridFactor: int
+    grid: str = ''
+    gridFactor: int = 0
 
-    def to_dict(self) -> dict:
-        return {
-            'grid': self.grid,
-            'gridFactor': self.gridFactor
-        }
 
 class GridList(BaseDataBaseView):
     def __init__(self, debug: bool = False) -> None:

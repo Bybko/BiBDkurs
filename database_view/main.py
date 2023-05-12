@@ -1,8 +1,6 @@
-from abc import ABC  #модуль для создания абстрактных классов и методов
-from dataclasses import dataclass #модуль для создания dataclass'ов - классов-контейнеров для хранения данных
-# , где автоматически создаются __init__, __repr__, __eq__ и другие на основе определенных атрибутов класса.
-
+from abc import ABC
 from database import DataBase
+from dataclasses import dataclass, asdict
 
 
 @dataclass()
@@ -23,7 +21,7 @@ class BaseDataBaseView(ABC):
         return self.record_type(*self._database.get_record(self.table_name, self.id_name, record_id)[0])
 
     def add(self, record: BaseRecord) -> None:
-        self._database.add_record(self.table_name, record.to_dict())
+        self._database.add_record(self.table_name, asdict(record))
         self._database.commit()
 
     def delete(self, record_id: str | list[str]) -> None:
@@ -31,7 +29,7 @@ class BaseDataBaseView(ABC):
         self._database.commit()
 
     def update(self, record_id: str | list[str], record: BaseRecord) -> None:
-        self._database.update_record(self.table_name, self.id_name, record_id, record.to_dict())
+        self._database.update_record(self.table_name, self.id_name, record_id, asdict(record))
         self._database.commit()
 
     def get_table(self) -> list[BaseRecord]:

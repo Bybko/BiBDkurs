@@ -4,11 +4,11 @@ from dataclasses import dataclass
 
 @dataclass()
 class ProductElement(BaseRecord):
-    productCode: str
-    productName: str
-    productDescription: str
-    unit: str
-    price: int
+    productCode: str = ''
+    productName: str = ''
+    productDescription: str = ''
+    unit: str = ''
+    price: int = 0
 
 class ProductList(BaseDataBaseView):
     def __init__(self, debug: bool = False) -> None:

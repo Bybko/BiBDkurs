@@ -4,14 +4,8 @@ from dataclasses import dataclass
 
 @dataclass()
 class RankElement(BaseRecord):
-    rank: str
-    rankFactor: int
-
-    def to_dict(self) -> dict:
-        return {
-            'rank': self.rank,
-            'rankFactor': self.rankFactor
-        }
+    rank: str = ''
+    rankFactor: int = 0
 
 class RankList(BaseDataBaseView):
     def __init__(self, debug: bool = False) -> None:
