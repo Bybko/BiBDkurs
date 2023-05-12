@@ -8,8 +8,6 @@ class TaskElement(BaseRecord):
     brigadeCode: str
     dealNumber: str
     productCode: str
-
-    #date: list[str]
     date: str
     operationCode: str
     professionCode: str
@@ -17,13 +15,6 @@ class TaskElement(BaseRecord):
     grid: str
     detailsPlan: int
     detailsResult: int
-
-    #operationCode: list[str]
-    #professionCode: list[str]
-    #rank: list[int]
-    #grid: list[str]
-    #detailsPlan: list[int]
-    #detailsResult: list[int]
 
     def to_dict(self) -> dict:
         return {

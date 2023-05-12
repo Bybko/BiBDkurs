@@ -2,29 +2,87 @@ MDScreenManager:
     id: main_screen_manager
 
     MDScreen:
-        name: 'main'
-        md_bg_color: "ffffff"
+        name: 'auth'
 
-        MDBoxLayout:
+        MDFloatLayout:
             orientation: 'vertical'
-            size_hint_y: 0.9
+            size_hint_y: 1
             spacing: 20
             padding: 20
 
-            MDRectangleFlatButton:
-                size_hint_x: 0.5
-                pos_hint: {"center_x": 0.5}
-                text: "Справочные документы"
-                on_press: main_screen_manager.current = 'tables'
+            MDBoxLayout:
+                orientation: 'vertical'
+                adaptive_height: True
+                min_height: 1
+                spacing: 10
+                size_hint: 0.5, None
+                pos_hint: {"center_x": 0.65, "center_y": 0.5}
 
-            MDRectangleFlatButton:
-                size_hint_x: 0.5
-                pos_hint: {"center_x": 0.5}
-                text: "Оперативные документы"
-                on_press: main_screen_manager.current = 'operation_tables'
+                MDBoxLayout:
+                    adaptive_width: True
+                    pos_hint: {"center_x": 0.5}
+                    MDLabel:
+                        text: "Авторизация"
+                MDTextField:
+                    id: login
+                    size_hint:
+                MDTextField:
+                    id: password
+                    password: True
+                MDRectangleFlatButton:
+                    text: "Войти"
+                    on_press: app.auth(login.text, password.text)
+                    pos_hint: {"center_x": 0.5}
+                    md_bg_color: "#8FBC8F"
+                    line_color: 0, 0, 0, 0
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
 
         Navigation:
-            title: "АРМ \"Технолога швейного цеха\""
+            title: "   Технолог фабрики"
+            size_hint: 0.35, 1
+
+    MDScreen:
+        name: 'main'
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: 60
+            padding: 100
+
+            MDRectangleFlatButton:
+                size_hint: 0.45, 0.1
+                pos_hint: {"center_x": 0.75, "center_y": 0.7}
+                text: "Справочные документы"
+                on_press: main_screen_manager.current = 'tables'
+                md_bg_color: "#FAEBD7"
+                line_color: 0, 0, 0, 0
+                theme_text_color: "Custom"
+                text_color: 0, 0, 0, 1
+
+            MDRectangleFlatButton:
+                size_hint: 0.45, 0.1
+                pos_hint: {"center_x": 0.75, "center_y": 0.5}
+                text: "Оперативные документы"
+                on_press: main_screen_manager.current = 'operation_tables'
+                md_bg_color: "#FFDAB9"
+                line_color: 0, 0, 0, 0
+                theme_text_color: "Custom"
+                text_color: 0, 0, 0, 1
+
+            MDRectangleFlatButton:
+                size_hint: 0.45, 0.1
+                pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                text: "Отчётные документы"
+                on_press: main_screen_manager.current = 'report_tables'
+                md_bg_color: "#5F9EA0"
+                line_color: 0, 0, 0, 0
+                theme_text_color: "Custom"
+                text_color: 0, 0, 0, 1
+
+        Navigation:
+            title: "   Технолог фабрики"
+            size_hint: 0.35, 1
 
     MDScreen:
         name: 'tables'
@@ -83,6 +141,8 @@ MDScreenManager:
                             pos_hint: {"center_x": 0.5}
                             text: "Назад"
                             on_press: main_screen_manager.current = 'main'
+                    Navigation:
+                        title: "Справочные документы"
 
                 MDScreen:
                     name: 'rank_view'
@@ -97,15 +157,16 @@ MDScreenManager:
                             id: rank_list
 
                         MDBoxLayout:
-                            orientation: 'horizontal'
+                            orientation: 'vertical'
                             size_hint_y: 0.1
 
                             MDRectangleFlatButton:
                                 text: "Назад"
-                                size_hint_x: 0.2
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
                                 on_press: table_screen_manager.current = 'table_choose'
-                            MDLabel:
-                                size_hint_x: 0.8
+                    Navigation:
+                        title: "Список разрядов"
 
                 MDScreen:
                     name: 'grid_view'
@@ -129,6 +190,9 @@ MDScreenManager:
                                 pos_hint: {"center_x": 0.5}
                                 on_press: table_screen_manager.current = 'table_choose'
 
+                    Navigation:
+                        title: "Список сеток"
+
                 MDScreen:
                     name: 'brigade_view'
 
@@ -150,6 +214,9 @@ MDScreenManager:
                                 size_hint_x: 0.5
                                 pos_hint: {"center_x": 0.5}
                                 on_press: table_screen_manager.current = 'table_choose'
+
+                    Navigation:
+                        title: "Список бригад"
 
                 MDScreen:
                     name: 'product_view'
@@ -173,6 +240,9 @@ MDScreenManager:
                                 pos_hint: {"center_x": 0.5}
                                 on_press: table_screen_manager.current = 'table_choose'
 
+                    Navigation:
+                        title: "Справочник заказчиков швейного цеха"
+
                 MDScreen:
                     name: 'operations_view'
 
@@ -194,6 +264,9 @@ MDScreenManager:
                                 size_hint_x: 0.5
                                 pos_hint: {"center_x": 0.5}
                                 on_press: table_screen_manager.current = 'table_choose'
+
+                    Navigation:
+                        title: "Справочник видов операций"
 
                 MDScreen:
                     name: 'client_view'
@@ -217,8 +290,8 @@ MDScreenManager:
                                 pos_hint: {"center_x": 0.5}
                                 on_press: table_screen_manager.current = 'table_choose'
 
-        Navigation:
-            title: "Справочные документы"
+                    Navigation:
+                        title: "Список заказчиков швейного цеха"
 
     MDScreen:
         name: 'operation_tables'
@@ -254,6 +327,9 @@ MDScreenManager:
                             text: "Назад"
                             on_press: main_screen_manager.current = 'main'
 
+                    Navigation:
+                        title: "Оперативные документы"
+
                 MDScreen:
                     name: 'plan_view'
 
@@ -267,15 +343,17 @@ MDScreenManager:
                             id: plan_list
 
                         MDBoxLayout:
-                            orientation: 'horizontal'
+                            orientation: 'vertical'
                             size_hint_y: 0.1
 
                             MDRectangleFlatButton:
                                 text: "Назад"
-                                size_hint_x: 0.2
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
                                 on_press: operation_table_screen_manager.current = 'table_choose'
-                            MDLabel:
-                                size_hint_x: 0.8
+
+                    Navigation:
+                        title: "План работы бригад швейного цеха"
 
                 MDScreen:
                     name: 'task_view'
@@ -290,16 +368,18 @@ MDScreenManager:
                             id: task_list
 
                         MDBoxLayout:
-                            orientation: 'horizontal'
+                            orientation: 'vertical'
                             size_hint_y: 0.1
 
                             MDRectangleFlatButton:
                                 text: "Назад"
-                                size_hint_x: 0.2
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
                                 on_press: operation_table_screen_manager.current = 'table_choose'
-                            MDLabel:
-                                size_hint_x: 0.8
 
+
+                    Navigation:
+                        title: "Наряд-задание на выполнение договора"
 
 <Navigation>:
     pos_hint: {"top": 1}
@@ -646,13 +726,13 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "star"
+                    icon: "content-save-edit"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_task(root)
 
                 MDIconButton:
-                    icon: "account-heart"
+                    icon: "delete"
                     theme_icon_color: "Custom"
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}

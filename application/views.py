@@ -41,7 +41,7 @@ class RankView(MDScrollView):
         self.rank_list.remove_widget(self.add_button)
         card = RankCard(
             id=f'',
-            rank='0',
+            rank='',
             rankFactor='0',
             size_hint_y=None,
             height=100

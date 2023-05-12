@@ -1,12 +1,13 @@
 from kivymd.uix.card import MDCard
 from kivy.properties import StringProperty, NumericProperty
 
+
 class Card(MDCard):
     id = StringProperty()
 
 
 class RankCard(Card):
-    rank = NumericProperty()
+    rank = StringProperty()
     rankFactor = NumericProperty()
 
 
@@ -65,3 +66,14 @@ class TaskCard(Card):
     grid = StringProperty()
     detailsPlan = NumericProperty()
     detailsResult = NumericProperty()
+
+
+class DealReportCard(Card):
+    dealNumber = StringProperty()
+    companyCode = StringProperty()
+    companyName = StringProperty()
+    productName = StringProperty()
+    unit = StringProperty()
+    price = NumericProperty()
+    num = NumericProperty()
+    totalPrice = NumericProperty()

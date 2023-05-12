@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 @dataclass()
 class RankElement(BaseRecord):
-    rank: int
+    rank: str
     rankFactor: int
 
     def to_dict(self) -> dict:

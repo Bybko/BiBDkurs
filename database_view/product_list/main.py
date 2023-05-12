@@ -10,15 +10,6 @@ class ProductElement(BaseRecord):
     unit: str
     price: int
 
-    def to_dict(self) -> dict:
-        return {
-            'productCode': self.productCode,
-            'productName': self.productName,
-            'productDescription': self.productDescription,
-            'unit': self.unit,
-            'price': self.price
-        }
-
 class ProductList(BaseDataBaseView):
     def __init__(self, debug: bool = False) -> None:
         super().__init__(debug)

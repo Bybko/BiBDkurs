@@ -2,6 +2,7 @@ from kivymd.app import MDApp
 from kivymd.uix.toolbar import MDTopAppBar
 from kivymd.uix.navigationdrawer import MDNavigationDrawer
 from kivymd.uix.textfield import MDTextField
+from kivymd.toast import toast
 
 from views import RankView, GridView, BrigadesView, ProductView, OperationsView, ClientView, PlanView, TaskView
 from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, OperationsCard, ClientsCard, PlanCard, TaskCard
@@ -18,6 +19,7 @@ class Navigation(MDTopAppBar):
     pass
 
 
+
 class KursApp(MDApp):
     kv_directory = './kv'
 
@@ -26,7 +28,7 @@ class KursApp(MDApp):
 
         #со всем ниже поэксперементировать
         self.theme_cls.theme_style = 'Light'
-        self.theme_cls.primary_palette = 'Teal'
+        self.theme_cls.primary_palette = 'Brown'
         self.theme_cls.accent_palette = 'Red'
         self.theme_cls.accent_hue = '900'
         self.error_color = "#FF0000"
@@ -41,8 +43,22 @@ class KursApp(MDApp):
         self.plan_view = BrigadePlan(debug)
         self.task_view = Task(debug)
 
+    def auth(self, login: str, password: str) -> None:
+        if login == 'admin' and password == 'admin':
+            self.root.current = 'main'
+
+            #if not self.backup:
+                #return
+
+            #self.current_datetime = datetime.datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+            #if not os.path.exists(rf'backup/{self.current_datetime}.db'):
+                #self.show_loading('Создание точки восстановления')
+                #Clock.schedule_once(self.database_backup, )
+        else:
+            toast('Ошибка авторизации')
+
     def add_rank(self):
-        self.rank_view.add(RankElement('0', '0'))
+        self.rank_view.add(RankElement('', '0'))
 
     def delete_rank(self, card: Card):
         self.rank_view.delete(card.id)
