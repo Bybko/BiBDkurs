@@ -16,13 +16,13 @@ class DataBase:
             original_base.backup(self.__connection)
             original_base.close()
         else:
-            self.__connection = sqlite3.connect('./db.db', 10) #устанавливает таймаут для ввода и вывода
+            self.__connection = sqlite3.connect('./db.db', 10)
         self.__cursor = self.__connection.cursor()
 
     def get_records_from_table(self, table_name: str) -> list[tuple]: #возвращает список кортежей, поскольку из бд записи передаются в виде кортежей
         return self.__cursor.execute(f'''
             SELECT * FROM "{table_name}"
-        ''').fetchall() #возвращает все строки результата запроса как список кортежей
+        ''').fetchall()
 
     def get_record(self, table_name: str, id_name: str | list[str], record_id: str | list[str]) -> list:
         set_where_string = ''
@@ -45,7 +45,7 @@ class DataBase:
         set_string = ''
         set_where_string = ''
         for key, value in record_data.items():
-            if isinstance(value, str): #функция, которая используется для проверки принадлежности объекта к определенному классу
+            if isinstance(value, str):
                 set_string += f"{key} = '{value}', "
             else:
                 set_string += f"{key} = {value}, "
@@ -60,7 +60,7 @@ class DataBase:
         self.__cursor.execute(f'''
             UPDATE "{table_name}" SET {set_string[:-2]} 
             WHERE {set_where_string} 
-        ''') #-2 означает кроме двух последних символов, т.к. в конце там лишние , и пробел
+        ''')
 
     def add_record(self, table_name: str, record_data: dict) -> None:
         # с помощью метода keys() получаются все ключи, которые пробразуются в кортеж

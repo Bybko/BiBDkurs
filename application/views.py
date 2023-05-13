@@ -125,14 +125,14 @@ class PlanView(TableView):
         self.record_type = BrigadePlanElement
         super().__init__(**kwargs)
 
-        def _add_card(self, record: BaseRecord) -> None:
-            card = self.record_card_type(
-                id=f'{astuple(record)[0]}, {astuple(record)[2]}',
-                **asdict(record),
-                size_hint_y=None,
-                height=100
-            )
-            self.records_list.add_widget(card)
+    def _add_card(self, record: BaseRecord) -> None:
+        card = self.record_card_type(
+            id=f'{astuple(record)[0]}, {astuple(record)[2]}',
+            **asdict(record),
+            size_hint_y=None,
+            height=100
+        )
+        self.records_list.add_widget(card)
 
 
 class TaskView(TableView):
@@ -142,11 +142,11 @@ class TaskView(TableView):
         self.record_type = TaskElement
         super().__init__(**kwargs)
 
-        def _add_card(self, record: BaseRecord) -> None:
-            card = self.record_card_type(
-                id=f'{astuple(record)[0]}, {astuple(record)[3]}, {astuple(record)[5]}',
-                **asdict(record),
-                size_hint_y=None,
-                height=100
-            )
-            self.records_list.add_widget(card)
+    def _add_card(self, record: BaseRecord) -> None:
+        card = self.record_card_type(
+            id=f'{astuple(record)[0]}, {astuple(record)[3]}, {astuple(record)[5]}',
+            **asdict(record),
+            size_hint_y=None,
+            height=100
+        )
+        self.records_list.add_widget(card)
