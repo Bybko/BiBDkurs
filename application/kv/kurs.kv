@@ -80,9 +80,44 @@ MDScreenManager:
                 theme_text_color: "Custom"
                 text_color: 0, 0, 0, 1
 
+            MDRectangleFlatButton:
+                size_hint_x: 1
+                pos_hint: {"center_x": 0.5}
+                text: "Восстановление данных"
+                on_press: main_screen_manager.current = 'restore'
+
         Navigation:
             title: "   Технолог фабрики"
             size_hint: 0.35, 1
+
+    MDScreen:
+        name: 'restore'
+
+        Navigation:
+            title: "Восстановление данных"
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.9
+            spacing: 20
+            padding: 20
+
+            MDFloatLayout:
+                size_hint_y: 0.9
+
+                MDIconButton:
+                    text: "Open manager"
+                    icon: "folder"
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    on_release: app.file_manager_open()
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.1
+
+                TableBackButton:
+                    screen_manager: main_screen_manager
+                    back_screen: 'main'
 
     MDScreen:
         name: 'tables'
@@ -104,37 +139,37 @@ MDScreenManager:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
                             text: "Список разрядов"
-                            on_press: table_screen_manager.current = 'rank_view'
+                            on_press: table_screen_manager.current = 'rank_view'; rank_list.refresh()
 
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
                             text: "Список сеток"
-                            on_press: table_screen_manager.current = 'grid_view'
+                            on_press: table_screen_manager.current = 'grid_view'; grid_list.refresh()
 
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
                             text: "Список бригад"
-                            on_press: table_screen_manager.current = 'brigade_view'
+                            on_press: table_screen_manager.current = 'brigade_view'; brigade_list.refresh()
 
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
                             text: "Справочник швейных изделий"
-                            on_press: table_screen_manager.current = 'product_view'
+                            on_press: table_screen_manager.current = 'product_view'; product_list.refresh()
 
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
                             text: "Справочник видов операций"
-                            on_press: table_screen_manager.current = 'operations_view'
+                            on_press: table_screen_manager.current = 'operations_view'; operations_list.refresh()
 
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
                             text: "Справочник заказчиков швейного цеха"
-                            on_press: table_screen_manager.current = 'client_view'
+                            on_press: table_screen_manager.current = 'client_view'; client_list.refresh()
 
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
@@ -313,13 +348,13 @@ MDScreenManager:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
                             text: "План работы бригад швейного цеха"
-                            on_press: operation_table_screen_manager.current = 'plan_view'
+                            on_press: operation_table_screen_manager.current = 'plan_view'; plan_list.refresh()
 
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
                             text: "Наряд-задание на выполнение договора"
-                            on_press: operation_table_screen_manager.current = 'task_view'
+                            on_press: operation_table_screen_manager.current = 'task_view'; task_list.refresh()
 
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
@@ -384,6 +419,12 @@ MDScreenManager:
 <Navigation>:
     pos_hint: {"top": 1}
     size_hint_y: 0.1
+
+<TableBackButton@MDRectangleFlatButton>:
+    text: "Назад"
+    size_hint_x: 0.2
+    pos_hint: {"center_x": 0.5}
+    on_press: self.screen_manager.current = self.back_screen
 
 
 <RankCard>:

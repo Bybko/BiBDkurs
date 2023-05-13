@@ -3,12 +3,19 @@ from kivymd.uix.toolbar import MDTopAppBar
 from kivymd.uix.navigationdrawer import MDNavigationDrawer
 from kivymd.uix.textfield import MDTextField
 from kivymd.toast import toast
+from kivymd.uix.screen import MDScreen
+import os
+from kivymd.uix.filemanager import MDFileManager
+import pathlib
+import datetime
+
 
 from views import RankView, GridView, BrigadesView, ProductView, OperationsView, ClientView, PlanView, TaskView
 from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, OperationsCard, ClientsCard, PlanCard, TaskCard
 from database_view import BrigadeElement, BrigadesList, ClientElement, ClientsList, GridElement, GridList, \
     OperationsElement, OperationsList, ProductElement, ProductList, RankElement, RankList, BrigadePlanElement, \
     BrigadePlan, TaskElement, Task, BaseDataBaseView, BaseRecord
+from database import DataBase
 
 
 class Menu(MDNavigationDrawer):
@@ -18,12 +25,14 @@ class Menu(MDNavigationDrawer):
 class Navigation(MDTopAppBar):
     pass
 
+class MainScreen(MDScreen):
+    pass
 
 
 class KursApp(MDApp):
     kv_directory = './kv'
 
-    def __init__(self, debug=False, **kwargs) -> None:
+    def __init__(self, debug=False, backup=True, **kwargs) -> None:
         super().__init__(**kwargs)
 
         self.theme_cls.theme_style = 'Light'
@@ -32,6 +41,9 @@ class KursApp(MDApp):
         self.theme_cls.accent_hue = '900'
         self.error_color = "#FF0000"
         self.save_color = '#00FF00'
+
+        self.debug = debug
+        self.backup = backup
 
         self.rank_view = RankList(debug)
         self.grid_view = GridList(debug)
@@ -42,19 +54,37 @@ class KursApp(MDApp):
         self.plan_view = BrigadePlan(debug)
         self.task_view = Task(debug)
 
+        self.is_manager_open = False
+        self.file_manager = MDFileManager(
+            exit_manager=self.exit_manager,
+            select_path=self.select_path,
+        )
+
     def auth(self, login: str, password: str) -> None:
         if login == 'admin' and password == 'admin':
             self.root.current = 'main'
 
-            #if not self.backup:
-                #return
+            if not self.backup:
+                return
 
-            #self.current_datetime = datetime.datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
-            #if not os.path.exists(rf'backup/{self.current_datetime}.db'):
-                #self.show_loading('Создание точки восстановления')
-                #Clock.schedule_once(self.database_backup, )
+            current_datetime = datetime.datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+            if not os.path.exists(rf'backup/{current_datetime}.db'):
+                DataBase(self.debug).backup(rf'backup/{current_datetime}.db')
         else:
             toast('Ошибка авторизации')
+
+    def file_manager_open(self):
+        self.file_manager.show(str(pathlib.Path(os.getcwd() + '/backup/')))
+        self.is_manager_open = True
+
+    def select_path(self, path):
+        self.exit_manager()
+        toast(path)
+        DataBase(self.debug).restore(path)
+
+    def exit_manager(self, *args):
+        self.is_manager_open = False
+        self.file_manager.close()
 
 
     def add(self, table_view: BaseDataBaseView, record: BaseRecord):

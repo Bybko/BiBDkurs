@@ -44,6 +44,14 @@ class TableView(MDScrollView):
         self._add_card(record)
         self.records_list.add_widget(self.add_button)
 
+
+    def refresh(self) -> None:
+        self.records = self.database_view.get_table()
+        self.records_list.clear_widgets()
+        for record in self.records:
+            self._add_card(record)
+        self.records_list.add_widget(self.add_button)
+
     def _add_card(self, record: BaseRecord) -> None:
         card = self.record_card_type(
             id=f'{astuple(record)[0]}',
