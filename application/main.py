@@ -15,7 +15,7 @@ from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, Operation
 from database_view import BrigadeElement, BrigadesList, ClientElement, ClientsList, GridElement, GridList, \
     OperationsElement, OperationsList, ProductElement, ProductList, RankElement, RankList, BrigadePlanElement, \
     BrigadePlan, TaskElement, Task, SpecificationElement, Specification, BaseDataBaseView, BaseRecord, \
-    ReportTask
+    ReportTask, ReportDeal
 from database import DataBase
 
 
@@ -56,12 +56,22 @@ class KursApp(MDApp):
         self.task_view = Task(debug)
         self.specification_view = Specification(debug)
         self.task_report_view = ReportTask(self.task_view, self.operations_view, debug)
+        self.deal_report_view = ReportDeal(self.task_view, self.client_view, self.specification_view,
+                                           self.product_view, debug)
 
         self.is_manager_open = False
         self.file_manager = MDFileManager(
             exit_manager=self.exit_manager,
             select_path=self.select_path,
         )
+
+    def get_total_num(self) -> int:
+        records = self.deal_report_view.get_table()
+        return records[-1].totalNum
+
+    def get_total_price(self) -> int:
+        records = self.deal_report_view.get_table()
+        return records[-1].totalPrice
 
     def auth(self, login: str, password: str) -> None:
         if login == '' and password == '':

@@ -9,3 +9,4 @@ from .rank_list import RankElement, RankList
 from .task import TaskElement, Task
 from .specification import SpecificationElement, Specification
 from .task_report import ReportTaskElement, ReportTask
+from .deal_report import ReportDealElement, ReportDeal

@@ -1,1 +1,1 @@
-from .main import GridElement, GridList
+from .main import ReportDealElement, ReportDeal

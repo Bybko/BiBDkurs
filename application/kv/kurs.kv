@@ -473,6 +473,12 @@ MDScreenManager:
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
+                            text: "Отчёт по договору на изготовление швейных изделий"
+                            on_press: report_table_screen_manager.current = 'deal_report_view'; deal_report_list.refresh()
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
                             text: "Назад"
                             on_press: main_screen_manager.current = 'main'
 
@@ -503,6 +509,51 @@ MDScreenManager:
 
                     Navigation:
                         title: "Отчёт по наряд-заданию"
+
+                MDScreen:
+                    name: 'deal_report_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        DealReportView:
+                            id: deal_report_list
+
+                        BoxLayout:
+                            orientation: 'vertical'
+                            opacity: 1
+                            MDBoxLayout:
+                                padding: 20
+                                MDCard:
+                                    MDGridLayout:
+                                        cols: 2
+                                        rows: 2
+                                        spacing: 80
+                                        MDLabel:
+                                            height: 100
+                                            width: 150
+                                            size_hint_x: None
+                                            text: "Общее количество: " + str(app.get_total_num())
+                                        MDLabel:
+                                            width: 150
+                                            size_hint_x: None
+                                            text: "Общая стоимость: " + str(app.get_total_price())
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
+                                on_press: report_table_screen_manager.current = 'table_choose'
+
+                    Navigation:
+                        title: "Отчёт по договору на изготовление швейных изделий"
 
 <Navigation>:
     pos_hint: {"top": 1}
@@ -944,4 +995,51 @@ MDScreenManager:
                 width: 90
                 size_hint_x: None
                 text: root.endDate
+
+<DealReportCard>:
+    size_hint_y: None
+    height: content.height
+    orientation: 'vertical'
+
+    MDCardSwipeFrontBox:
+        orientation: 'vertical'
+        MDGridLayout:
+            height: 100
+            cols: 8
+            rows: 1
+            spacing: 10
+            padding: 10
+            id: content
+            MDLabel:
+                width: 35
+                size_hint_x: None
+                text: root.dealNumber
+            MDLabel:
+                with: 25
+                size_hint_x: None
+                text: root.companyCode
+            MDLabel:
+                text: root.companyName
+            MDLabel:
+                width: 70
+                size_hint_x: None
+                text: root.productName
+            MDLabel:
+                width: 55
+                size_hint_x: None
+                text: root.unit
+            MDLabel:
+                width: 55
+                size_hint_x: None
+                text: str(root.price)
+            MDLabel:
+                width: 55
+                size_hint_x: None
+                text: str(root.num)
+            MDLabel:
+                width: 55
+                size_hint_x: None
+                text: str(root.codeProductsPrice)
+
+
 
