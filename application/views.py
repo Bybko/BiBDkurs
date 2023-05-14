@@ -4,11 +4,12 @@ from kivymd.uix.gridlayout import MDGridLayout
 from kivymd.uix.button import MDRectangleFlatButton
 
 
-from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, OperationsCard, ClientsCard, PlanCard, TaskCard
+from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, OperationsCard, ClientsCard, \
+    PlanCard, TaskCard, SpecificationCard
 from dataclasses import astuple, asdict
 from database_view import BrigadeElement, ClientElement, GridElement, \
     OperationsElement, ProductElement, RankElement, BrigadePlanElement, \
-    TaskElement, BaseDataBaseView, BaseRecord
+    TaskElement, SpecificationElement, BaseDataBaseView, BaseRecord
 
 class AddButton(MDRectangleFlatButton):
     def __init__(self, callback, **kwargs) -> None:
@@ -145,6 +146,22 @@ class TaskView(TableView):
     def _add_card(self, record: BaseRecord) -> None:
         card = self.record_card_type(
             id=f'{astuple(record)[0]}, {astuple(record)[3]}, {astuple(record)[5]}',
+            **asdict(record),
+            size_hint_y=None,
+            height=100
+        )
+        self.records_list.add_widget(card)
+
+class SpecificationView(TableView):
+    def __init__(self, **kwargs):
+        self.database_view = MDApp.get_running_app().specification_view
+        self.record_card_type = SpecificationCard
+        self.record_type = SpecificationElement
+        super().__init__(**kwargs)
+
+    def _add_card(self, record: BaseRecord) -> None:
+        card = self.record_card_type(
+            id=f'{astuple(record)[0]}, {astuple(record)[2]}',
             **asdict(record),
             size_hint_y=None,
             height=100

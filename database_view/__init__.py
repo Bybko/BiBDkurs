@@ -7,3 +7,4 @@ from .operations_list import OperationsElement, OperationsList
 from .product_list import ProductElement, ProductList
 from .rank_list import RankElement, RankList
 from .task import TaskElement, Task
+from .specification import SpecificationElement, Specification

@@ -68,6 +68,13 @@ class TaskCard(Card):
     detailsResult = NumericProperty(0)
 
 
+class SpecificationCard(Card):
+    dealNumber = StringProperty('')
+    companyCode = StringProperty('')
+    productCode = StringProperty('')
+    detailsNum = NumericProperty(0)
+
+
 class DealReportCard(Card):
     dealNumber = StringProperty('')
     companyCode = StringProperty('')

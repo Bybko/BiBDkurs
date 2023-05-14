@@ -14,7 +14,7 @@ from views import RankView, GridView, BrigadesView, ProductView, OperationsView,
 from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, OperationsCard, ClientsCard, PlanCard, TaskCard
 from database_view import BrigadeElement, BrigadesList, ClientElement, ClientsList, GridElement, GridList, \
     OperationsElement, OperationsList, ProductElement, ProductList, RankElement, RankList, BrigadePlanElement, \
-    BrigadePlan, TaskElement, Task, BaseDataBaseView, BaseRecord
+    BrigadePlan, TaskElement, Task, SpecificationElement, Specification, BaseDataBaseView, BaseRecord
 from database import DataBase
 
 
@@ -53,6 +53,7 @@ class KursApp(MDApp):
         self.client_view = ClientsList(debug)
         self.plan_view = BrigadePlan(debug)
         self.task_view = Task(debug)
+        self.specification_view = Specification(debug)
 
         self.is_manager_open = False
         self.file_manager = MDFileManager(
@@ -161,6 +162,15 @@ class KursApp(MDApp):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.task_view.update(card.id.split(', '), TaskElement(*[field.text for field in fields]))
         card.id = fields[0].text + ', ' + fields[3].text + ', ' + fields[5].text
+
+    def delete_specification(self, card: Card):
+        self.specification_view.delete(card.id)
+        self.root.ids.specification_list.records_list.remove_widget(card)
+
+    def update_specification(self, card: Card):
+        fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
+        self.specification_view.update(card.id.split(', '), SpecificationElement(*[field.text for field in fields]))
+        card.id = fields[0].text + ', ' + fields[2].text
 
 
 # for tests

@@ -359,6 +359,12 @@ MDScreenManager:
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
+                            text: "Спецификация на изготовление швейных изделий"
+                            on_press: operation_table_screen_manager.current = 'specification_view'; specification_list.refresh()
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
                             text: "Назад"
                             on_press: main_screen_manager.current = 'main'
 
@@ -415,6 +421,32 @@ MDScreenManager:
 
                     Navigation:
                         title: "Наряд-задание на выполнение договора"
+
+                MDScreen:
+                    name: 'specification_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        SpecificationView:
+                            id: specification_list
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
+                                on_press: operation_table_screen_manager.current = 'table_choose'
+
+
+                    Navigation:
+                        title: "Спецификация на изготовление швейных изделий"
 
 <Navigation>:
     pos_hint: {"top": 1}
@@ -778,3 +810,42 @@ MDScreenManager:
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
                     on_press: app.delete_task(root)
+
+<SpecificationCard>:
+    size_hint_y: None
+    height: content.height
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            size_hint_y: None
+            cols: 5
+            rows: 1
+            spacing: 10
+            id: content
+            MDTextField:
+                width: 100
+                size_hint_x: None
+                text: root.dealNumber
+            MDTextField:
+                text: root.companyCode
+            MDTextField:
+                text: root.productCode
+            MDTextField:
+                text: str(root.detailsNum)
+            MDBoxLayout:
+                width: 50
+                size_hint_x: None
+                orientation: 'vertical'
+                MDIconButton:
+                    icon: "content-save-edit"
+                    theme_icon_color: "Custom"
+                    icon_color: app.save_color
+                    on_press: app.update_specification(root)
+
+                MDIconButton:
+                    icon: "delete"
+                    theme_icon_color: "Custom"
+                    icon_color: app.error_color
+                    pos_hint: {"center_y": .5}
+                    on_press: app.delete_specification(root)
