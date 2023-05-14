@@ -1,4 +1,4 @@
-from database_view import BaseRecord, BaseDataBaseView, Task, OperationsList, TaskElement, OperationsElement
+from database_view import BaseRecord, BaseDataBaseView, Task, OperationsList
 
 from dataclasses import dataclass
 from datetime import date
@@ -17,7 +17,7 @@ class ReportTaskElement(BaseRecord):
 class ReportTask(BaseDataBaseView):
     def __init__(self, task_view: Task, operations_view: OperationsList, debug: bool = False) -> None:
         super().__init__(debug)
-        self.table_name = 'Отчёт по наряд-заданию'
+        self.table_name = 'ReportTask'
         self.id_name = 'taskNumber'
         self.fields = ('taskNumber', 'productCode', 'operationName', 'rate', 'detailsPlan', 'detailsResult', 'endDate')
         self.record_type = ReportTask

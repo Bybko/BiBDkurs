@@ -5,12 +5,12 @@ from kivymd.uix.button import MDRectangleFlatButton
 
 
 from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, OperationsCard, ClientsCard, \
-    PlanCard, TaskCard, SpecificationCard, TaskReportCard, DealReportCard
+    PlanCard, TaskCard, SpecificationCard, TaskReportCard, DealReportCard, BrigadeReportCard
 from dataclasses import astuple, asdict
 from database_view import BrigadeElement, ClientElement, GridElement, \
     OperationsElement, ProductElement, RankElement, BrigadePlanElement, \
     TaskElement, SpecificationElement, BaseDataBaseView, BaseRecord, ReportTaskElement, \
-    ReportDealElement
+    ReportDealElement, ReportBrigadeElement
 
 class AddButton(MDRectangleFlatButton):
     def __init__(self, callback, **kwargs) -> None:
@@ -186,11 +186,27 @@ class TaskReportView(TableView):
     def refresh(self) -> None:
         pass
 
+
 class DealReportView(TableView):
     def __init__(self, **kwargs):
         self.database_view = MDApp.get_running_app().deal_report_view
         self.record_card_type = DealReportCard
         self.record_type = ReportDealElement
+        super().__init__(**kwargs)
+        self.records_list.remove_widget(self.add_button)
+
+    def add(self) -> None:
+        pass
+
+    def refresh(self) -> None:
+        pass
+
+
+class BrigadeReportView(TableView):
+    def __init__(self, **kwargs):
+        self.database_view = MDApp.get_running_app().brigade_report_view
+        self.record_card_type = BrigadeReportCard
+        self.record_type = ReportBrigadeElement
         super().__init__(**kwargs)
         self.records_list.remove_widget(self.add_button)
 

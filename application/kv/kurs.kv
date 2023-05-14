@@ -479,6 +479,12 @@ MDScreenManager:
                         MDRectangleFlatButton:
                             size_hint_x: 0.5
                             pos_hint: {"center_x": 0.5}
+                            text: "Отчёт о деятельности отдельной бригады"
+                            on_press: report_table_screen_manager.current = 'brigade_report_view'; brigade_report_list.refresh()
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
                             text: "Назад"
                             on_press: main_screen_manager.current = 'main'
 
@@ -554,6 +560,32 @@ MDScreenManager:
 
                     Navigation:
                         title: "Отчёт по договору на изготовление швейных изделий"
+
+
+                MDScreen:
+                    name: 'brigade_report_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        BrigadeReportView:
+                            id: brigade_report_list
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
+                                on_press: report_table_screen_manager.current = 'table_choose'
+
+                    Navigation:
+                        title: "Отчёт о деятельности отдельной бригады"
 
 <Navigation>:
     pos_hint: {"top": 1}
@@ -1040,6 +1072,29 @@ MDScreenManager:
                 width: 55
                 size_hint_x: None
                 text: str(root.codeProductsPrice)
+
+<BrigadeReportCard>:
+    size_hint_y: None
+    height: content.height
+    orientation: 'vertical'
+
+    MDCardSwipeFrontBox:
+        orientation: 'vertical'
+        MDGridLayout:
+            height: 100
+            cols: 4
+            rows: 1
+            spacing: 10
+            padding: 10
+            id: content
+            MDLabel:
+                text: root.brigadeCode
+            MDLabel:
+                text: root.productCode
+            MDLabel:
+                text: str(root.detailsResult)
+            MDLabel:
+                text: str(root.totalPrice)
 
 
 

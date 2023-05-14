@@ -84,6 +84,7 @@ class TaskReportCard(Card):
     detailsResult = NumericProperty(0)
     endDate = StringProperty('')
 
+
 class DealReportCard(Card):
     dealNumber = StringProperty('')
     companyCode = StringProperty('')
@@ -94,4 +95,11 @@ class DealReportCard(Card):
     num = NumericProperty(0)
     codeProductsPrice = NumericProperty(0)
     totalNum = NumericProperty(0)
+    totalPrice = NumericProperty(0)
+
+
+class BrigadeReportCard(Card):
+    brigadeCode = StringProperty('')
+    productCode = StringProperty('')
+    detailsResult = NumericProperty(0)
     totalPrice = NumericProperty(0)

@@ -15,7 +15,7 @@ from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, Operation
 from database_view import BrigadeElement, BrigadesList, ClientElement, ClientsList, GridElement, GridList, \
     OperationsElement, OperationsList, ProductElement, ProductList, RankElement, RankList, BrigadePlanElement, \
     BrigadePlan, TaskElement, Task, SpecificationElement, Specification, BaseDataBaseView, BaseRecord, \
-    ReportTask, ReportDeal
+    ReportTask, ReportDeal, ReportBrigade
 from database import DataBase
 
 
@@ -58,6 +58,7 @@ class KursApp(MDApp):
         self.task_report_view = ReportTask(self.task_view, self.operations_view, debug)
         self.deal_report_view = ReportDeal(self.task_view, self.client_view, self.specification_view,
                                            self.product_view, debug)
+        self.brigade_report_view = ReportBrigade(self.task_view, self.product_view, self.brigade_view, debug)
 
         self.is_manager_open = False
         self.file_manager = MDFileManager(
