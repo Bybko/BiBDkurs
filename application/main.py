@@ -40,8 +40,8 @@ class KursApp(MDApp):
         self.theme_cls.primary_palette = 'Brown'
         self.theme_cls.accent_palette = 'Red'
         self.theme_cls.accent_hue = '900'
-        self.error_color = "#FF0000"
-        self.save_color = '#00FF00'
+        self.error_color = "#A52A2A"
+        self.save_color = '#DEB887'
 
         self.debug = debug
         self.backup = backup
@@ -101,6 +101,8 @@ class KursApp(MDApp):
         self.is_manager_open = False
         self.file_manager.close()
 
+    def exit(self) -> None:
+        self.stop()
 
     def add(self, table_view: BaseDataBaseView, record: BaseRecord):
         table_view.add(record)
@@ -108,83 +110,101 @@ class KursApp(MDApp):
     def delete_rank(self, card: Card):
         self.rank_view.delete(card.id)
         self.root.ids.rank_list.records_list.remove_widget(card)
+        toast('Запись удалена')
 
     def update_rank(self, card: Card):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.rank_view.update(card.id, RankElement(*[field.text for field in fields]))
         card.id = fields[0].text
+        toast('Успешно сохранено')
 
     def delete_grid(self, card: Card):
         self.grid_view.delete(card.id)
         self.root.ids.grid_list.records_list.remove_widget(card)
+        toast('Запись удалена')
 
     def update_grid(self, card: Card):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.grid_view.update(card.id, GridElement(*[field.text for field in fields]))
         card.id = fields[0].text
+        toast('Успешно сохранено')
 
     def delete_brigade(self, card: Card):
         self.brigade_view.delete(card.id)
         self.root.ids.brigade_list.records_list.remove_widget(card)
+        toast('Запись удалена')
 
     def update_brigade(self, card: Card):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.brigade_view.update(card.id, BrigadeElement(*[field.text for field in fields]))
         card.id = fields[0].text
+        toast('Успешно сохранено')
 
     def delete_product(self, card: Card):
         self.product_view.delete(card.id)
         self.root.ids.product_list.records_list.remove_widget(card)
+        toast('Запись удалена')
 
     def update_product(self, card: Card):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.product_view.update(card.id, ProductElement(*[field.text for field in fields]))
         card.id = fields[0].text
+        toast('Успешно сохранено')
 
     def delete_operation(self, card: Card):
         self.operations_view.delete(card.id)
         self.root.ids.operations_list.records_list.remove_widget(card)
+        toast('Запись удалена')
 
     def update_operation(self, card: Card):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.operations_view.update(card.id.split(', '), OperationsElement(*[field.text for field in fields]))
         card.id = fields[0].text + ', ' + fields[1].text
+        toast('Успешно сохранено')
 
     def delete_client(self, card: Card):
         self.client_view.delete(card.id)
         self.root.ids.client_list.records_list.remove_widget(card)
+        toast('Запись удалена')
 
     def update_client(self, card: Card):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.client_view.update(card.id, ClientElement(*[field.text for field in fields]))
         card.id = fields[0].text
+        toast('Успешно сохранено')
 
     def delete_plan(self, card: Card):
         self.plan_view.delete(card.id)
         self.root.ids.plan_list.records_list.remove_widget(card)
+        toast('Запись удалена')
 
     def update_plan(self, card: Card):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.plan_view.update(card.id.split(', '), BrigadePlanElement(*[field.text for field in fields]))
         card.id = fields[0].text + ', ' + fields[2].text
+        toast('Успешно сохранено')
 
     def delete_task(self, card: Card):
         self.task_view.delete(card.id)
         self.root.ids.task_list.records_list.remove_widget(card)
+        toast('Запись удалена')
 
     def update_task(self, card: Card):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.task_view.update(card.id.split(', '), TaskElement(*[field.text for field in fields]))
         card.id = fields[0].text + ', ' + fields[3].text + ', ' + fields[5].text
+        toast('Успешно сохранено')
 
     def delete_specification(self, card: Card):
         self.specification_view.delete(card.id)
         self.root.ids.specification_list.records_list.remove_widget(card)
+        toast('Запись удалена')
 
     def update_specification(self, card: Card):
         fields = [widget for widget in card.children[0].children[0].children if isinstance(widget, MDTextField)][::-1]
         self.specification_view.update(card.id.split(', '), SpecificationElement(*[field.text for field in fields]))
         card.id = fields[0].text + ', ' + fields[2].text
+        toast('Успешно сохранено')
 
 
 # for tests

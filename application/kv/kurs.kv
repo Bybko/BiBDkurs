@@ -47,7 +47,7 @@ MDScreenManager:
 
         MDBoxLayout:
             orientation: 'vertical'
-            spacing: 60
+            spacing: 30
             padding: 100
 
             MDRectangleFlatButton:
@@ -81,43 +81,130 @@ MDScreenManager:
                 text_color: 0, 0, 0, 1
 
             MDRectangleFlatButton:
-                size_hint_x: 1
-                pos_hint: {"center_x": 0.5}
-                text: "Восстановление данных"
-                on_press: main_screen_manager.current = 'restore'
+                size_hint: 0.45, 0.1
+                pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                text: "Дополнительно"
+                on_press: main_screen_manager.current = 'choose_action'
+                md_bg_color: "#FFA07A"
+                line_color: 0, 0, 0, 0
+                theme_text_color: "Custom"
+                text_color: 0, 0, 0, 1
+
+            MDRectangleFlatButton:
+                size_hint: 0.45, 0.1
+                pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                text: "Выход"
+                on_press: app.exit()
+                md_bg_color: "#F08080"
+                line_color: 0, 0, 0, 0
+                theme_text_color: "Custom"
+                text_color: 0, 0, 0, 1
 
         Navigation:
             title: "   Технолог фабрики"
             size_hint: 0.35, 1
 
     MDScreen:
-        name: 'restore'
+        name: 'choose_action'
 
-        Navigation:
-            title: "Восстановление данных"
+        MDNavigationLayout:
+            MDScreenManager:
+                id: action_screen_manager
 
-        MDBoxLayout:
-            orientation: 'vertical'
-            size_hint_y: 0.9
-            spacing: 20
-            padding: 20
+                MDScreen:
+                    name: 'choose_action'
 
-            MDFloatLayout:
-                size_hint_y: 0.9
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
 
-                MDIconButton:
-                    text: "Open manager"
-                    icon: "folder"
-                    pos_hint: {'center_x': .5, 'center_y': .5}
-                    on_release: app.file_manager_open()
+                        MDRectangleFlatButton:
+                            size_hint: 0.45, 0.1
+                            pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                            text: "Восстановление данных"
+                            on_press: action_screen_manager.current = 'restore'
 
-            MDBoxLayout:
-                orientation: 'vertical'
-                size_hint_y: 0.1
+                        MDRectangleFlatButton:
+                            size_hint: 0.45, 0.1
+                            pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                            text: "Справка"
+                            on_press: action_screen_manager.current = 'about'
 
-                TableBackButton:
-                    screen_manager: main_screen_manager
-                    back_screen: 'main'
+                        MDRectangleFlatButton:
+                            size_hint: 0.45, 0.1
+                            pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                            text: "Назад"
+                            on_press: main_screen_manager.current = 'main'
+                    Navigation:
+                        title: "   Технолог фабрики"
+                        size_hint: 0.35, 1
+
+
+                MDScreen:
+                    name: 'restore'
+
+                    Navigation:
+                        title: "Восстановление данных"
+                        size_hint: 0.35, 1
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        MDFloatLayout:
+                            size_hint_y: 0.9
+
+                            MDIconButton:
+                                text: "Open manager"
+                                icon: "folder"
+                                pos_hint: {'center_x': .5, 'center_y': .5}
+                                on_release: app.file_manager_open()
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            TableBackButton:
+                                size_hint: 0.45, 0.1
+                                pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                                screen_manager: action_screen_manager
+                                back_screen: 'choose_action'
+
+                MDScreen:
+                    name: 'about'
+
+                    Navigation:
+                        title: "Справка"
+                        size_hint: 0.35, 1
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        MDFloatLayout:
+                            size_hint_y: 0.9
+
+                            MDIconButton:
+                                text: "Open manager"
+                                icon: "folder"
+                                pos_hint: {'center_x': .5, 'center_y': .5}
+                                on_release: app.file_manager_open()
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            TableBackButton:
+                                size_hint: 0.45, 0.1
+                                pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                                screen_manager: action_screen_manager
+                                back_screen: 'choose_action'
 
     MDScreen:
         name: 'tables'
@@ -652,7 +739,7 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "content-save-all"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_rank(root)
@@ -688,7 +775,7 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "content-save-all"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_grid(root)
@@ -723,7 +810,7 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "content-save-all"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_brigade(root)
@@ -770,7 +857,7 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "content-save-all"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_product(root)
@@ -819,7 +906,7 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "content-save-all"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_operation(root)
@@ -861,7 +948,7 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "content-save-all"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_client(root)
@@ -907,7 +994,7 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "content-save-all"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_plan(root)
@@ -969,7 +1056,7 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "content-save-all"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_task(root)
@@ -1008,7 +1095,7 @@ MDScreenManager:
                 size_hint_x: None
                 orientation: 'vertical'
                 MDIconButton:
-                    icon: "content-save-edit"
+                    icon: "content-save-all"
                     theme_icon_color: "Custom"
                     icon_color: app.save_color
                     on_press: app.update_specification(root)
