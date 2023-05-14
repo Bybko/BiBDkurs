@@ -103,3 +103,10 @@ class BrigadeReportCard(Card):
     productCode = StringProperty('')
     detailsResult = NumericProperty(0)
     totalPrice = NumericProperty(0)
+
+
+class TotalReportCard(Card):
+    unit = StringProperty('')
+    totalDealsResult = NumericProperty(0)
+    totalDealsCost = NumericProperty(0)
+    totalProducts = NumericProperty(0)

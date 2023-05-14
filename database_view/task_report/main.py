@@ -14,13 +14,14 @@ class ReportTaskElement(BaseRecord):
     detailsResult: int = 0
     endDate: str = ''
 
+
 class ReportTask(BaseDataBaseView):
     def __init__(self, task_view: Task, operations_view: OperationsList, debug: bool = False) -> None:
         super().__init__(debug)
         self.table_name = 'ReportTask'
         self.id_name = 'taskNumber'
         self.fields = ('taskNumber', 'productCode', 'operationName', 'rate', 'detailsPlan', 'detailsResult', 'endDate')
-        self.record_type = ReportTask
+        self.record_type = ReportTaskElement
         self.task_view = task_view
         self.operations_view = operations_view
 
