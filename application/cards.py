@@ -75,12 +75,11 @@ class SpecificationCard(Card):
     detailsNum = NumericProperty(0)
 
 
-class DealReportCard(Card):
-    dealNumber = StringProperty('')
-    companyCode = StringProperty('')
-    companyName = StringProperty('')
-    productName = StringProperty('')
-    unit = StringProperty('')
-    price = NumericProperty(0)
-    num = NumericProperty(0)
-    totalPrice = NumericProperty(0)
+class TaskReportCard(Card):
+    taskNumber = StringProperty('')
+    productCode = StringProperty('')
+    operationName = StringProperty('')
+    rate = NumericProperty(0)
+    detailsPlan = NumericProperty(0)
+    detailsResult = NumericProperty(0)
+    endDate = StringProperty('')

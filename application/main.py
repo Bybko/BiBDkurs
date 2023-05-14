@@ -14,7 +14,8 @@ from views import RankView, GridView, BrigadesView, ProductView, OperationsView,
 from cards import Card, RankCard, GridCard, BrigadesCard, ProductCard, OperationsCard, ClientsCard, PlanCard, TaskCard
 from database_view import BrigadeElement, BrigadesList, ClientElement, ClientsList, GridElement, GridList, \
     OperationsElement, OperationsList, ProductElement, ProductList, RankElement, RankList, BrigadePlanElement, \
-    BrigadePlan, TaskElement, Task, SpecificationElement, Specification, BaseDataBaseView, BaseRecord
+    BrigadePlan, TaskElement, Task, SpecificationElement, Specification, BaseDataBaseView, BaseRecord, \
+    ReportTask
 from database import DataBase
 
 
@@ -54,6 +55,7 @@ class KursApp(MDApp):
         self.plan_view = BrigadePlan(debug)
         self.task_view = Task(debug)
         self.specification_view = Specification(debug)
+        self.task_report_view = ReportTask(self.task_view, self.operations_view, debug)
 
         self.is_manager_open = False
         self.file_manager = MDFileManager(
@@ -62,7 +64,7 @@ class KursApp(MDApp):
         )
 
     def auth(self, login: str, password: str) -> None:
-        if login == 'admin' and password == 'admin':
+        if login == '' and password == '':
             self.root.current = 'main'
 
             if not self.backup:

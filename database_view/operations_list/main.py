@@ -1,6 +1,6 @@
 from database_view import BaseRecord, BaseDataBaseView
 
-from dataclasses import dataclass#, asdict
+from dataclasses import dataclass, asdict
 
 @dataclass()
 class OperationsElement(BaseRecord):

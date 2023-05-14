@@ -448,6 +448,62 @@ MDScreenManager:
                     Navigation:
                         title: "Спецификация на изготовление швейных изделий"
 
+    MDScreen:
+        name: 'report_tables'
+
+        MDNavigationLayout:
+            MDScreenManager:
+                id: report_table_screen_manager
+
+                MDScreen:
+                    name: 'table_choose'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Отчёт по наряд-заданию"
+                            on_press: report_table_screen_manager.current = 'task_report_view'; task_report_list.refresh()
+
+                        MDRectangleFlatButton:
+                            size_hint_x: 0.5
+                            pos_hint: {"center_x": 0.5}
+                            text: "Назад"
+                            on_press: main_screen_manager.current = 'main'
+
+                    Navigation:
+                        title: "Отчётные документы"
+
+                MDScreen:
+                    name: 'task_report_view'
+
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: 0.9
+                        spacing: 20
+                        padding: 20
+
+                        TaskReportView:
+                            id: task_report_list
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: 0.1
+
+                            MDRectangleFlatButton:
+                                text: "Назад"
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
+                                on_press: report_table_screen_manager.current = 'table_choose'
+
+                    Navigation:
+                        title: "Отчёт по наряд-заданию"
+
 <Navigation>:
     pos_hint: {"top": 1}
     size_hint_y: 0.1
@@ -821,7 +877,7 @@ MDScreenManager:
             size_hint_y: None
             cols: 5
             rows: 1
-            spacing: 10
+            spacing: 5
             id: content
             MDTextField:
                 width: 100
@@ -849,3 +905,43 @@ MDScreenManager:
                     icon_color: app.error_color
                     pos_hint: {"center_y": .5}
                     on_press: app.delete_specification(root)
+
+
+<TaskReportCard>:
+    size_hint_y: None
+    height: content.height
+
+    MDCardSwipeFrontBox:
+        MDGridLayout:
+            height: 100
+            cols: 7
+            rows: 1
+            spacing: 10
+            id: content
+            MDLabel:
+                width: 15
+                size_hint_x: None
+                text: root.taskNumber
+            MDLabel:
+                with: 25
+                size_hint_x: None
+                text: root.productCode
+            MDLabel:
+                text: root.operationName
+            MDLabel:
+                width: 55
+                size_hint_x: None
+                text: str(root.rate)
+            MDLabel:
+                width: 55
+                size_hint_x: None
+                text: str(root.detailsPlan)
+            MDLabel:
+                width: 55
+                size_hint_x: None
+                text: str(root.detailsResult)
+            MDLabel:
+                width: 90
+                size_hint_x: None
+                text: root.endDate
+
