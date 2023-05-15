@@ -844,16 +844,14 @@ MDScreenManager:
 
                         BoxLayout:
                             orientation: 'vertical'
-                            opacity: 1
                             MDBoxLayout:
                                 padding: 20
                                 MDCard:
                                     MDGridLayout:
                                         cols: 2
-                                        rows: 2
+                                        rows: 1
                                         spacing: 80
                                         MDLabel:
-                                            height: 100
                                             width: 150
                                             size_hint_x: None
                                             text: "Общее количество: " + str(app.get_total_num())
