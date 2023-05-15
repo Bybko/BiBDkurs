@@ -39,6 +39,7 @@ MDScreenManager:
                     text_color: 0, 0, 0, 1
 
         Navigation:
+            font_size: 20
             title: "   Технолог фабрики"
             size_hint: 0.35, 1
 
@@ -51,6 +52,7 @@ MDScreenManager:
             padding: 100
 
             MDRectangleFlatButton:
+                font_size: 20
                 size_hint: 0.45, 0.1
                 pos_hint: {"center_x": 0.75, "center_y": 0.7}
                 text: "Справочные документы"
@@ -61,6 +63,7 @@ MDScreenManager:
                 text_color: 0, 0, 0, 1
 
             MDRectangleFlatButton:
+                font_size: 20
                 size_hint: 0.45, 0.1
                 pos_hint: {"center_x": 0.75, "center_y": 0.5}
                 text: "Оперативные документы"
@@ -71,6 +74,7 @@ MDScreenManager:
                 text_color: 0, 0, 0, 1
 
             MDRectangleFlatButton:
+                font_size: 20
                 size_hint: 0.45, 0.1
                 pos_hint: {"center_x": 0.75, "center_y": 0.3}
                 text: "Отчётные документы"
@@ -81,6 +85,7 @@ MDScreenManager:
                 text_color: 0, 0, 0, 1
 
             MDRectangleFlatButton:
+                font_size: 20
                 size_hint: 0.45, 0.1
                 pos_hint: {"center_x": 0.75, "center_y": 0.3}
                 text: "Дополнительно"
@@ -91,6 +96,7 @@ MDScreenManager:
                 text_color: 0, 0, 0, 1
 
             MDRectangleFlatButton:
+                font_size: 20
                 size_hint: 0.45, 0.1
                 pos_hint: {"center_x": 0.75, "center_y": 0.3}
                 text: "Выход"
@@ -101,6 +107,7 @@ MDScreenManager:
                 text_color: 0, 0, 0, 1
 
         Navigation:
+            font_size: 20
             title: "   Технолог фабрики"
             size_hint: 0.35, 1
 
@@ -121,16 +128,19 @@ MDScreenManager:
                         MDRectangleFlatButton:
                             size_hint: 0.2, 0.1
                             pos_hint: {"top": 0.87, "left": 1}
+                            font_size: 20
                             text: "Восстановление данных"
                             on_press: action_screen_manager.current = 'restore'
 
                         MDRectangleFlatButton:
                             size_hint: 0.2, 0.1
                             pos_hint: {"top": 0.87, "center": 1}
+                            font_size: 20
                             text: "Справка"
                             on_press: action_screen_manager.current = 'about'
 
                         MDRectangleFlatButton:
+                            font_size: 20
                             size_hint: 0.2, 0.1
                             pos_hint: {"top": 0.87, "right": 1}
                             text: "Назад"
@@ -148,6 +158,7 @@ MDScreenManager:
                         padding: 20
 
                         MDRectangleFlatButton:
+                            font_size: 20
                             size_hint: 0.6, 0.1
                             pos_hint: {"top": 0.87, "left": 1}
                             text: "Выбор версии для восстановления"
@@ -155,6 +166,7 @@ MDScreenManager:
 
                         MDBoxLayout:
                             TableBackButton:
+                                font_size: 20
                                 size_hint: 0.4, 0.1
                                 pos_hint: {"top": 0.87, "right": 1}
                                 screen_manager: action_screen_manager
@@ -171,23 +183,26 @@ MDScreenManager:
                         orientation: 'vertical'
                         pos_hint: {"bot": 0.3}
                         MDBoxLayout:
-                            padding: 30
+                            padding: 40
                             MDCard:
                                 MDGridLayout:
                                     cols: 3
                                     rows: 1
-                                    spacing: 40
-                                    size_hint: 0.9, 0.3
+                                    spacing: 60
+                                    size_hint: 1, 0.3
                                     MDLabel:
+                                        font_size: 20
                                         height: 100
                                         width: 200
                                         size_hint_x: None
                                         text: "Приложение АРМ \"Технолога фабрики\" "
                                     MDLabel:
+                                        font_size: 20
                                         width: 150
                                         size_hint_x: None
                                         text: "Версия 1.0"
                                     MDLabel:
+                                        font_size: 20
                                         width: 150
                                         size_hint_x: None
                                         text: "Разработчик Быбко Т.А."
@@ -203,7 +218,6 @@ MDScreenManager:
                                 back_screen: 'choose_action'
 
                     Navigation:
-                        title: "                                                                      Справка"
                         size_hint: 1, 0.6
 
     MDScreen:
@@ -264,6 +278,7 @@ MDScreenManager:
                             text: "Назад"
                             on_press: main_screen_manager.current = 'main'
                     Navigation:
+                        font_size: 20
                         title: "                                                    Справочные документы"
                         size_hint: 1, 0.3
 
@@ -276,6 +291,29 @@ MDScreenManager:
                         size_hint_y: 0.9
                         spacing: 20
                         padding: 20
+
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 140
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 5
+                                    rows: 1
+                                    spacing: 10
+
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Разряд"
+                                    MDLabel:
+                                        text: "Коэффициент ставки"
 
                         RankView:
                             id: rank_list
@@ -290,6 +328,7 @@ MDScreenManager:
                                 pos_hint: {"center_x": 0.5}
                                 on_press: table_screen_manager.current = 'table_choose'
                     Navigation:
+                        font_size: 20
                         title: "Список разрядов"
 
 
@@ -301,6 +340,29 @@ MDScreenManager:
                         size_hint_y: 0.9
                         spacing: 20
                         padding: 20
+
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 140
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 5
+                                    rows: 1
+                                    spacing: 10
+
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Сетка"
+                                    MDLabel:
+                                        text: "Коэффициент ставки"
 
                         GridView:
                             id: grid_list
@@ -327,6 +389,37 @@ MDScreenManager:
                         spacing: 20
                         padding: 20
 
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 140
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 5
+                                    rows: 1
+                                    spacing: 10
+
+                                    MDLabel:
+                                        width: 220
+                                        size_hint_x: None
+                                        text: "Код бригады"
+                                    MDLabel:
+                                        text: "ФИО бригадира"
+                                    MDLabel:
+                                        width: 200
+                                        size_hint_x: None
+                                        text: "Количество человек"
+                                    MDLabel:
+                                        width: 50
+                                        size_hint_x: None
+                                        text: ""
+
                         BrigadesView:
                             id: brigade_list
 
@@ -352,6 +445,47 @@ MDScreenManager:
                         spacing: 20
                         padding: 20
 
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 140
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 5
+                                    rows: 1
+                                    spacing: 10
+
+                                    MDLabel:
+                                        width: 150
+                                        size_hint_x: None
+                                        text: "Код изделия"
+                                    MDLabel:
+                                        width: 130
+                                        size_hint_x: None
+                                        text: "Название"
+                                    MDLabel:
+                                        width: 130
+                                        size_hint_x: None
+                                        text: "Описание"
+                                    MDLabel:
+                                        width: 120
+                                        size_hint_x: None
+                                        text: "Измерение"
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Цена"
+                                    MDLabel:
+                                        width: 150
+                                        size_hint_x: None
+                                        text: ""
+
                         ProductView:
                             id: product_list
 
@@ -366,7 +500,7 @@ MDScreenManager:
                                 on_press: table_screen_manager.current = 'table_choose'
 
                     Navigation:
-                        title: "Справочник заказчиков швейного цеха"
+                        title: "Справочник швейных изделий"
 
                 MDScreen:
                     name: 'operations_view'
@@ -376,6 +510,51 @@ MDScreenManager:
                         size_hint_y: 0.9
                         spacing: 20
                         padding: 20
+
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 140
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 6
+                                    rows: 1
+                                    spacing: 10
+
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Код изделия"
+                                    MDLabel:
+                                        width: 120
+                                        size_hint_x: None
+                                        text: "Код операции"
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Название"
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Измерение"
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Время выполнения"
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Расценка"
+                                    MDLabel:
+                                        width: 150
+                                        size_hint_x: None
+                                        text: ""
 
                         OperationsView:
                             id: operations_list
@@ -401,6 +580,43 @@ MDScreenManager:
                         size_hint_y: 0.9
                         spacing: 20
                         padding: 20
+
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 140
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 5
+                                    rows: 1
+                                    spacing: 70
+
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Код предприятия"
+                                    MDLabel:
+                                        width: 130
+                                        size_hint_x: None
+                                        text: "Название"
+                                    MDLabel:
+                                        width: 80
+                                        size_hint_x: None
+                                        text: "Адрес"
+                                    MDLabel:
+                                        width: 70
+                                        size_hint_x: None
+                                        text: "Реквизит"
+                                    MDLabel:
+                                        width: 150
+                                        size_hint_x: None
+                                        text: ""
 
                         ClientView:
                             id: client_list
@@ -840,18 +1056,14 @@ MDScreenManager:
             rows: 1
             spacing: 10
             MDTextField:
-                width: 100
+                width: 150
                 size_hint_x: None
                 text: root.productCode
             MDTextField:
                 text: root.productName
             MDTextField:
-                width: 100
-                size_hint_x: None
                 text: root.productDescription
             MDTextField:
-                width: 100
-                size_hint_x: None
                 text: root.unit
             MDTextField:
                 width: 100
@@ -941,11 +1153,11 @@ MDScreenManager:
             MDTextField:
                 text: root.companyName
             MDTextField:
-                width: 100
+                width: 150
                 size_hint_x: None
                 text: root.companyLocation
             MDTextField:
-                width: 100
+                width: 150
                 size_hint_x: None
                 text: root.companyCheck
             MDBoxLayout:
