@@ -392,7 +392,7 @@ MDScreenManager:
                         MDBoxLayout:
                             padding: 20
                             size_hint_y: None
-                            height: 140
+                            height: 100
 
                             MDCard:
                                 size_hint_y: None
@@ -401,24 +401,22 @@ MDScreenManager:
                                 MDGridLayout:
                                     height: 100
                                     size_hint_y: None
-                                    cols: 5
+                                    cols: 4
                                     rows: 1
                                     spacing: 10
 
                                     MDLabel:
-                                        width: 220
-                                        size_hint_x: None
                                         text: "Код бригады"
                                     MDLabel:
                                         text: "ФИО бригадира"
                                     MDLabel:
-                                        width: 200
+                                        width: 150
                                         size_hint_x: None
                                         text: "Количество человек"
                                     MDLabel:
                                         width: 50
                                         size_hint_x: None
-                                        text: ""
+                                        text: " "
 
                         BrigadesView:
                             id: brigade_list
@@ -466,25 +464,23 @@ MDScreenManager:
                                         size_hint_x: None
                                         text: "Код изделия"
                                     MDLabel:
-                                        width: 130
+                                        width: 150
                                         size_hint_x: None
                                         text: "Название"
                                     MDLabel:
-                                        width: 130
-                                        size_hint_x: None
                                         text: "Описание"
-                                    MDLabel:
-                                        width: 120
-                                        size_hint_x: None
-                                        text: "Измерение"
                                     MDLabel:
                                         width: 100
                                         size_hint_x: None
-                                        text: "Цена"
+                                        text: "Измерение"
                                     MDLabel:
                                         width: 150
                                         size_hint_x: None
-                                        text: ""
+                                        text: "Цена"
+                                    MDLabel:
+                                        width: 50
+                                        size_hint_x: None
+                                        text: " "
 
                         ProductView:
                             id: product_list
@@ -530,14 +526,10 @@ MDScreenManager:
                                     MDLabel:
                                         width: 100
                                         size_hint_x: None
-                                        text: "Код изделия"
-                                    MDLabel:
-                                        width: 120
-                                        size_hint_x: None
                                         text: "Код операции"
                                     MDLabel:
-                                        width: 100
-                                        size_hint_x: None
+                                        text: "Код изделия"
+                                    MDLabel:
                                         text: "Название"
                                     MDLabel:
                                         width: 100
@@ -546,15 +538,15 @@ MDScreenManager:
                                     MDLabel:
                                         width: 100
                                         size_hint_x: None
-                                        text: "Время выполнения"
+                                        text: "Время\nвыполнения"
                                     MDLabel:
-                                        width: 100
+                                        width: 150
                                         size_hint_x: None
                                         text: "Расценка"
                                     MDLabel:
                                         width: 150
                                         size_hint_x: None
-                                        text: ""
+                                        text: "   "
 
                         OperationsView:
                             id: operations_list
@@ -593,7 +585,7 @@ MDScreenManager:
                                 MDGridLayout:
                                     height: 100
                                     size_hint_y: None
-                                    cols: 5
+                                    cols: 4
                                     rows: 1
                                     spacing: 70
 
@@ -602,15 +594,13 @@ MDScreenManager:
                                         size_hint_x: None
                                         text: "Код предприятия"
                                     MDLabel:
-                                        width: 130
-                                        size_hint_x: None
                                         text: "Название"
                                     MDLabel:
-                                        width: 80
+                                        width: 150
                                         size_hint_x: None
                                         text: "Адрес"
                                     MDLabel:
-                                        width: 70
+                                        width: 150
                                         size_hint_x: None
                                         text: "Реквизит"
                                     MDLabel:
@@ -699,24 +689,20 @@ MDScreenManager:
                                 MDGridLayout:
                                     height: 100
                                     size_hint_y: None
-                                    cols: 5
+                                    cols: 6
                                     rows: 1
                                     spacing: 5
 
                                     MDLabel:
-                                        width: 130
+                                        width: 100
                                         size_hint_x: None
                                         text: "Договор"
                                     MDLabel:
-                                        width: 200
-                                        size_hint_x: None
                                         text: "Общее количество изделий"
                                     MDLabel:
-                                        width: 130
-                                        size_hint_x: None
-                                        text: "Код бригады"
+                                        text: "Бригада"
                                     MDLabel:
-                                        width: 120
+                                        width: 100
                                         size_hint_x: None
                                         text: "Изделия на бригаду"
                                     MDLabel:
@@ -724,9 +710,9 @@ MDScreenManager:
                                         size_hint_x: None
                                         text: "Дата завершения"
                                     MDLabel:
-                                        width: 150
+                                        width: 50
                                         size_hint_x: None
-                                        text: ""
+                                        text: " "
 
                         PlanView:
                             id: plan_list
@@ -766,48 +752,44 @@ MDScreenManager:
                                 MDGridLayout:
                                     height: 100
                                     size_hint_y: None
-                                    cols: 12
+                                    cols: 11
                                     rows: 1
                                     spacing: 5
 
                                     MDLabel:
-                                        width: 10
+                                        width: 30
                                         size_hint_x: None
                                         text: "№"
                                     MDLabel:
-                                        text: "Код\nбригады"
+                                        text: "Бригада"
                                     MDLabel:
+                                        width: 70
+                                        size_hint_x: None
                                         text: "Договор"
                                     MDLabel:
-                                        width: 30
+                                        width: 70
                                         size_hint_x: None
-                                        text: "Код\nизделия"
+                                        text: "Изделие"
                                     MDLabel:
-                                        text: "Дата\nзавершения"
+                                        text: "Дата"
                                     MDLabel:
-                                        text: "Код\nоперации"
+                                        text: "Операция"
                                     MDLabel:
-                                        text: "Код профессии"
-                                    MDLabel:
-                                        width: 30
+                                        width: 70
                                         size_hint_x: None
                                         text: "Разряд"
                                     MDLabel:
-                                        width: 30
+                                        width: 50
                                         size_hint_x: None
                                         text: "Сетка"
                                     MDLabel:
-                                        width: 30
+                                        width: 70
                                         size_hint_x: None
                                         text: "Задано"
                                     MDLabel:
-                                        width: 30
+                                        width: 70
                                         size_hint_x: None
                                         text: "Сдано"
-                                    MDLabel:
-                                        width: 50
-                                        size_hint_x: None
-                                        text: ""
 
                         TaskView:
                             id: task_list
@@ -846,7 +828,7 @@ MDScreenManager:
                                 MDGridLayout:
                                     height: 100
                                     size_hint_y: None
-                                    cols: 5
+                                    cols: 4
                                     rows: 1
                                     spacing: 5
 
@@ -941,6 +923,52 @@ MDScreenManager:
                         spacing: 20
                         padding: 20
 
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 100
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 7
+                                    rows: 1
+                                    spacing: 5
+
+                                    MDLabel:
+                                        width: 30
+                                        size_hint_x: None
+                                        text: "№"
+                                    MDLabel:
+                                        width: 70
+                                        size_hint_x: None
+                                        text: "Изделие"
+                                    MDLabel:
+                                        text: "Наименование операции"
+                                    MDLabel:
+                                        width: 50
+                                        size_hint_x: None
+                                        text: "Цена"
+                                    MDLabel:
+                                        width: 60
+                                        size_hint_x: None
+                                        text: "Задано"
+                                    MDLabel:
+                                        width: 60
+                                        size_hint_x: None
+                                        text: "Сдано"
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Дата завершения"
+                                    MDLabel:
+                                        width: 50
+                                        size_hint_x: None
+                                        text: ""
+
                         TaskReportView:
                             id: task_report_list
 
@@ -965,6 +993,50 @@ MDScreenManager:
                         size_hint_y: 0.9
                         spacing: 20
                         padding: 20
+
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 100
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 8
+                                    rows: 1
+                                    spacing: 5
+
+                                    MDLabel:
+                                        width: 70
+                                        size_hint_x: None
+                                        text: "Договор"
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Код\nзаказчика"
+                                    MDLabel:
+                                        text: "Название"
+                                    MDLabel:
+                                        width: 70
+                                        size_hint_x: None
+                                        text: "Изделие"
+                                    MDLabel:
+                                        text: "Измерение"
+                                    MDLabel:
+                                        width: 80
+                                        size_hint_x: None
+                                        text: "Цена за\nизделие"
+                                    MDLabel:
+                                        width: 60
+                                        size_hint_x: None
+                                        text: "Кол-во"
+                                    MDLabel:
+                                        width: 100
+                                        size_hint_x: None
+                                        text: "Стоимость\nизделий"
 
                         DealReportView:
                             id: deal_report_list
@@ -1012,6 +1084,30 @@ MDScreenManager:
                         spacing: 20
                         padding: 20
 
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 100
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 4
+                                    rows: 1
+                                    spacing: 5
+
+                                    MDLabel:
+                                        text: "Бригада"
+                                    MDLabel:
+                                        text: "Изделие"
+                                    MDLabel:
+                                        text: "Всего сдано"
+                                    MDLabel:
+                                        text: "Стоимость"
+
                         BrigadeReportView:
                             id: brigade_report_list
 
@@ -1036,6 +1132,30 @@ MDScreenManager:
                         size_hint_y: 0.9
                         spacing: 20
                         padding: 20
+
+                        MDBoxLayout:
+                            padding: 20
+                            size_hint_y: None
+                            height: 100
+
+                            MDCard:
+                                size_hint_y: None
+                                height: 100
+                                MDGridLayout:
+                                    height: 100
+                                    size_hint_y: None
+                                    cols: 4
+                                    rows: 1
+                                    spacing: 5
+
+                                    MDLabel:
+                                        text: "Всего договоров"
+                                    MDLabel:
+                                        text: "Общая стоимость"
+                                    MDLabel:
+                                        text: "Измерение"
+                                    MDLabel:
+                                        text: "Общее количество изделий"
 
                         TotalReportView:
                             id: total_report_list
@@ -1066,38 +1186,38 @@ MDScreenManager:
 
 <RankCard>:
     size_hint_y: None
-    height: content.height
+    height: 100
+    adaptive_height: True
 
-    MDCardSwipeFrontBox:
-        MDGridLayout:
-            height: 100
-            size_hint_y: None
-            cols: 3
-            rows: 1
-            spacing: 10
-            id: content
-            MDTextField:
-                width: 100
-                size_hint_x: None
-                text: str(root.rank)
-            MDTextField:
-                text: str(root.rankFactor)
-            MDBoxLayout:
-                width: 50
-                size_hint_x: None
-                orientation: 'vertical'
-                MDIconButton:
-                    icon: "content-save-all"
-                    theme_icon_color: "Custom"
-                    icon_color: app.save_color
-                    on_press: app.update_rank(root)
+    MDGridLayout:
+        height: 100
+        size_hint_y: None
+        cols: 3
+        rows: 1
+        spacing: 10
+        id: content
+        MDTextField:
+            width: 100
+            size_hint_x: None
+            text: str(root.rank)
+        MDTextField:
+            text: str(root.rankFactor)
+        MDBoxLayout:
+            width: 50
+            size_hint_x: None
+            orientation: 'vertical'
+            MDIconButton:
+                icon: "content-save-all"
+                theme_icon_color: "Custom"
+                icon_color: app.save_color
+                on_press: app.update_rank(root)
 
-                MDIconButton:
-                    icon: "delete"
-                    theme_icon_color: "Custom"
-                    icon_color: app.error_color
-                    pos_hint: {"center_y": .5}
-                    on_press: app.delete_rank(root)
+            MDIconButton:
+                icon: "delete"
+                theme_icon_color: "Custom"
+                icon_color: app.error_color
+                pos_hint: {"center_y": .5}
+                on_press: app.delete_rank(root)
 
 
 <GridCard>:
@@ -1152,6 +1272,8 @@ MDScreenManager:
             MDTextField:
                 text: root.brigadeLeader
             MDTextField:
+                width: 150
+                size_hint_y: None
                 text: str(root.workersNum)
             MDBoxLayout:
                 width: 50
@@ -1183,11 +1305,11 @@ MDScreenManager:
             rows: 1
             spacing: 10
             MDTextField:
-                width: 200
+                width: 150
                 size_hint_x: None
                 text: root.productCode
             MDTextField:
-                width: 200
+                width: 150
                 size_hint_x: None
                 text: root.productName
             MDTextField:
@@ -1234,8 +1356,6 @@ MDScreenManager:
             MDTextField:
                 text: root.productCode
             MDTextField:
-                width: 100
-                size_hint_x: None
                 text: root.operationName
             MDTextField:
                 width: 100
@@ -1326,8 +1446,6 @@ MDScreenManager:
             MDTextField:
                 text: str(root.generalPlan)
             MDTextField:
-                width: 100
-                size_hint_x: None
                 text: root.brigadeCode
             MDTextField:
                 width: 100
@@ -1366,15 +1484,17 @@ MDScreenManager:
             rows: 1
             spacing: 5
             MDTextField:
-                width: 10
+                width: 30
                 size_hint_x: None
                 text: root.taskNumber
             MDTextField:
                 text: root.brigadeCode
             MDTextField:
+                width: 70
+                size_hint_x: None
                 text: root.dealNumber
             MDTextField:
-                width: 30
+                width: 70
                 size_hint_x: None
                 text: root.productCode
             MDTextField:
@@ -1382,21 +1502,19 @@ MDScreenManager:
             MDTextField:
                 text: root.operationCode
             MDTextField:
-                text: root.professionCode
-            MDTextField:
-                width: 30
+                width: 50
                 size_hint_x: None
                 text: str(root.rank)
             MDTextField:
-                width: 30
+                width: 50
                 size_hint_x: None
                 text: root.grid
             MDTextField:
-                width: 30
+                width: 50
                 size_hint_x: None
                 text: str(root.detailsPlan)
             MDTextField:
-                width: 30
+                width: 50
                 size_hint_x: None
                 text: str(root.detailsResult)
             MDBoxLayout:
@@ -1509,11 +1627,11 @@ MDScreenManager:
             padding: 10
             id: content
             MDLabel:
-                width: 35
+                width: 50
                 size_hint_x: None
                 text: root.dealNumber
             MDLabel:
-                with: 25
+                with: 50
                 size_hint_x: None
                 text: root.companyCode
             MDLabel:
@@ -1523,19 +1641,17 @@ MDScreenManager:
                 size_hint_x: None
                 text: root.productName
             MDLabel:
-                width: 55
-                size_hint_x: None
                 text: root.unit
             MDLabel:
-                width: 55
+                width: 80
                 size_hint_x: None
                 text: str(root.price)
             MDLabel:
-                width: 55
+                width: 60
                 size_hint_x: None
                 text: str(root.num)
             MDLabel:
-                width: 55
+                width: 80
                 size_hint_x: None
                 text: str(root.codeProductsPrice)
 

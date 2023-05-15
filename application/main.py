@@ -26,6 +26,7 @@ class Menu(MDNavigationDrawer):
 class Navigation(MDTopAppBar):
     pass
 
+
 class MainScreen(MDScreen):
     pass
 
