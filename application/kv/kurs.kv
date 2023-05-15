@@ -115,96 +115,96 @@ MDScreenManager:
                     name: 'choose_action'
 
                     MDBoxLayout:
-                        orientation: 'vertical'
-                        size_hint_y: 0.9
-                        spacing: 20
                         padding: 20
+                        spacing: 20
 
                         MDRectangleFlatButton:
-                            size_hint: 0.45, 0.1
-                            pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                            size_hint: 0.2, 0.1
+                            pos_hint: {"top": 0.87, "left": 1}
                             text: "Восстановление данных"
                             on_press: action_screen_manager.current = 'restore'
 
                         MDRectangleFlatButton:
-                            size_hint: 0.45, 0.1
-                            pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                            size_hint: 0.2, 0.1
+                            pos_hint: {"top": 0.87, "center": 1}
                             text: "Справка"
                             on_press: action_screen_manager.current = 'about'
 
                         MDRectangleFlatButton:
-                            size_hint: 0.45, 0.1
-                            pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                            size_hint: 0.2, 0.1
+                            pos_hint: {"top": 0.87, "right": 1}
                             text: "Назад"
                             on_press: main_screen_manager.current = 'main'
                     Navigation:
-                        title: "   Технолог фабрики"
-                        size_hint: 0.35, 1
+                        pos_hint: {"bot": 1}
+                        size_hint: 1, 0.6
 
 
                 MDScreen:
                     name: 'restore'
 
-                    Navigation:
-                        title: "Восстановление данных"
-                        size_hint: 0.35, 1
-
                     MDBoxLayout:
-                        orientation: 'vertical'
-                        size_hint_y: 0.9
                         spacing: 20
                         padding: 20
 
-                        MDFloatLayout:
-                            size_hint_y: 0.9
-
-                            MDIconButton:
-                                text: "Open manager"
-                                icon: "folder"
-                                pos_hint: {'center_x': .5, 'center_y': .5}
-                                on_release: app.file_manager_open()
+                        MDRectangleFlatButton:
+                            size_hint: 0.6, 0.1
+                            pos_hint: {"top": 0.87, "left": 1}
+                            text: "Выбор версии для восстановления"
+                            on_release: app.file_manager_open()
 
                         MDBoxLayout:
-                            orientation: 'vertical'
-                            size_hint_y: 0.1
-
                             TableBackButton:
-                                size_hint: 0.45, 0.1
-                                pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                                size_hint: 0.4, 0.1
+                                pos_hint: {"top": 0.87, "right": 1}
                                 screen_manager: action_screen_manager
                                 back_screen: 'choose_action'
+
+                    Navigation:
+                        pos_hint: {"bot": 1}
+                        size_hint: 1, 0.6
 
                 MDScreen:
                     name: 'about'
 
-                    Navigation:
-                        title: "Справка"
-                        size_hint: 0.35, 1
-
-                    MDBoxLayout:
+                    BoxLayout:
                         orientation: 'vertical'
-                        size_hint_y: 0.9
-                        spacing: 20
-                        padding: 20
-
-                        MDFloatLayout:
-                            size_hint_y: 0.9
-
-                            MDIconButton:
-                                text: "Open manager"
-                                icon: "folder"
-                                pos_hint: {'center_x': .5, 'center_y': .5}
-                                on_release: app.file_manager_open()
+                        pos_hint: {"bot": 0.3}
+                        MDBoxLayout:
+                            padding: 30
+                            MDCard:
+                                MDGridLayout:
+                                    cols: 3
+                                    rows: 1
+                                    spacing: 40
+                                    size_hint: 0.9, 0.3
+                                    MDLabel:
+                                        height: 100
+                                        width: 200
+                                        size_hint_x: None
+                                        text: "Приложение АРМ \"Технолога фабрики\" "
+                                    MDLabel:
+                                        width: 150
+                                        size_hint_x: None
+                                        text: "Версия 1.0"
+                                    MDLabel:
+                                        width: 150
+                                        size_hint_x: None
+                                        text: "Разработчик Быбко Т.А."
 
                         MDBoxLayout:
                             orientation: 'vertical'
                             size_hint_y: 0.1
-
+                            padding: 10
                             TableBackButton:
-                                size_hint: 0.45, 0.1
-                                pos_hint: {"center_x": 0.75, "center_y": 0.3}
+                                size_hint_x: 0.5
+                                pos_hint: {"center_x": 0.5}
                                 screen_manager: action_screen_manager
                                 back_screen: 'choose_action'
+
+                    Navigation:
+                        title: "                                                                      Справка"
+                        size_hint: 1, 0.6
 
     MDScreen:
         name: 'tables'
@@ -264,7 +264,9 @@ MDScreenManager:
                             text: "Назад"
                             on_press: main_screen_manager.current = 'main'
                     Navigation:
-                        title: "Справочные документы"
+                        title: "                                                    Справочные документы"
+                        size_hint: 1, 0.3
+
 
                 MDScreen:
                     name: 'rank_view'
@@ -289,6 +291,7 @@ MDScreenManager:
                                 on_press: table_screen_manager.current = 'table_choose'
                     Navigation:
                         title: "Список разрядов"
+
 
                 MDScreen:
                     name: 'grid_view'
@@ -456,7 +459,8 @@ MDScreenManager:
                             on_press: main_screen_manager.current = 'main'
 
                     Navigation:
-                        title: "Оперативные документы"
+                        title: "                                                    Оперативные документы"
+                        size_hint: 1, 0.3
 
                 MDScreen:
                     name: 'plan_view'
@@ -582,7 +586,8 @@ MDScreenManager:
                             on_press: main_screen_manager.current = 'main'
 
                     Navigation:
-                        title: "Отчётные документы"
+                        title: "                                                      Отчётные документы"
+                        size_hint: 1, 0.3
 
                 MDScreen:
                     name: 'task_report_view'
