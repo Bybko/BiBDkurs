@@ -77,7 +77,7 @@ class KursApp(MDApp):
         return records[-1].totalPrice
 
     def auth(self, login: str, password: str) -> None:
-        if login == '' and password == '':
+        if login == 'admin' and password == 'admin':
             self.root.current = 'main'
 
             if not self.backup:
